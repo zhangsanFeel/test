@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:71:"D:\phpStudy\WWW\test\public/../application/index\view\user\entrust.html";i:1516756137;s:62:"D:\phpStudy\WWW\test\application\index\view\public\header.html";i:1516498860;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:73:"D:\phpStudy\WWW\test\public/../application/index\view\user\subscribe.html";i:1516677972;s:62:"D:\phpStudy\WWW\test\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -75,10 +75,10 @@ $(function(){
 			<div class="me-nav">
 				<ul>
 					<li><a href="<?php echo url('user/index'); ?>">首页</a></li>
-					<li  ><a href="<?php echo url('user/collect'); ?>">关注房源</a></li>
+					<li  class="active" ><a href="<?php echo url('user/collect'); ?>">关注房源</a></li>
 					<li  > <a href="<?php echo url('user/subscribe'); ?>">预约清单</a></li>
 					<li><a href="<?php echo url('user/broker'); ?>">我关注的经纪人</a></li>
-					<li class="active" ><a href="<?php echo url('user/entrust'); ?>">我的委托</a></li>
+					<li ><a href="<?php echo url('user/entrust'); ?>">我的委托</a></li>
 				</ul>
 			</div>
 					
@@ -98,10 +98,11 @@ $(function(){
 	                    <tr role="row">
 	                        <th>id</th>
 	                        <th>预约房源</th>
-	                        <th>评价</th>
-	                        <th>带看经纪人</th>
-	                        <th>评分</th>
+	                        <th>描述</th>
+	                        <th>预留姓名</th>
+	                        <th>创建时间</th>
 	                        <th>状态</th>
+	                        <th>操作</th>
 	                    </tr>
 	                </thead>
 
@@ -110,10 +111,29 @@ $(function(){
 	                    <tr>
 	                        <td><?php echo $vo['id']; ?></td>
 	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-	                        <td><?php echo title_substr($vo['evaluate']); ?></td>
-	                        <td><a href="<?php echo url('broker/user',['id'=>$vo['broker_id']]); ?>" target="_blank"><?php echo broker_name($vo['broker_id']); ?></a></td>
-	                         <td><?php echo $vo['grade']; ?>分</td>
+	                        <td><?php echo $vo['desc']; ?></td>
+	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                         <td><?php echo create_time($vo['create_time']); ?></td>
 	                        <td><?php echo house_type($vo['status']); ?></td>
+	                        <td>
+	                        	
+										
+	                        	
+	                        	<?php if($vo['status'] == 3): ?>
+								<form action="<?php echo url('rent_house/delete'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
+									<button class="tag-fense" type="submit"><i class="fa fa-trash-o"></i>取消预约</button>
+								</form>
+	                        	<?php elseif($vo['status'] == 2): ?>
+	                        	<form action="<?php echo url('user/grade'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
+									<input type="hidden" name="status" value="<?php echo $vo['status']; ?>" />
+									<button class="tag-blue" type="submit"><i class="fa fa-trash-o"></i>进行评分</button>
+								</form>
+	                        	<?php endif; ?>
+
+	                        	
+	                        </td>
 	                     </tr>
 	                    <?php endforeach; endif; else: echo "" ;endif; ?>
 	                </tbody>
