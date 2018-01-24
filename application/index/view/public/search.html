@@ -1,0 +1,124 @@
+
+
+  <div class="content-search">
+
+            <form id="filterForm" action="" method="get">
+                <input to="filter" type="hidden" id="city_id" name="city_id" value="{$fitervalue['city_id']}" />  
+                <input to="filter" type="hidden" id="price" name="price" value="{$fitervalue['price']}" />  
+                <input to="filter" type="hidden" id="proportion" name="proportion" value="{$fitervalue['proportion']}" />  
+                <input to="filter" type="hidden" id="room" name="room" value="{$fitervalue['room']}" />  
+                <input to="filter" type="hidden" id="orientation" name="orientation" value="{$fitervalue['orientation']}" />  
+                <input to="filter" type="hidden" id="purpose" name="purpose" value="{$fitervalue['purpose']}" />  
+                <input to="filter" type="hidden" id="decorate" name="decorate" value="{$fitervalue['decorate']}" />  
+                <input to="filter" type="hidden" id="prop_type" name="prop_type" value="{$fitervalue['prop_type']}" /> 
+            </form> 
+
+            <p><span class="content-title">位置:</span>
+            <span class="content-main">
+              <a href="javascript:Filter('city_id','');"  {if condition="$fitervalue['city_id'] eq ''"} class="activate" {/if}>不限</a>
+              {volist name="regions" id="vo"}
+                <a href="javascript:Filter('city_id','{$vo.id}');" {if condition="$vo.id eq $cityPrant_id"} class="activate" {/if} >{$vo.name}</a>
+              {/volist}
+            </span>
+            </p>
+            <p><span class="content-title">商圈:</span>
+            <span class="content-main">
+                {volist name="business" id="vo"}  
+                  <a href="javascript:Filter('city_id','{$vo.id}');" {if condition="$fitervalue['city_id'] eq $vo.id"} class="activate" {/if} >{$vo.name}</a>
+                {/volist}
+            </span>
+            </p>
+            <p><span class="content-title">价格:</span>
+            <span class="content-main">
+              <a href="javascript:Filter('price','');" } {if condition="$fitervalue['price'] eq ''"} class="activate" {/if}>不限</a>
+              <a href="javascript:Filter('price','40');"  {if condition="$fitervalue['price'] eq '40'"} class="activate" {/if}>40万以下</a>
+              <a href="javascript:Filter('price','40-60' );"  {if condition="$fitervalue['price'] eq '40-60' "} class="activate" {/if} >40-60万</a>
+              <a href="javascript:Filter('price','60-80' );"{if condition="$fitervalue['price'] eq  '60-80' "} class="activate" {/if} >60-80万</a>
+              <a href="javascript:Filter('price','80-100' );"  {if condition="$fitervalue['price'] eq '80-100' "} class="activate" {/if}>80-100万</a>
+              <a href="javascript:Filter('price','100-150' );" {if condition="$fitervalue['price'] eq '100-150' "} class="activate" {/if}>100-150万</a>
+              <a href="javascript:Filter('price','150');"  {if condition="$fitervalue['price'] eq '150'"} class="activate" {/if}>150万以上</a>
+            </span>
+            </p>
+            <p><span class="content-title">面积:</span>
+            <span class="content-main">
+              <a href="javascript:Filter('proportion','');" } {if condition="$fitervalue['proportion'] eq ''"} class="activate" {/if}>不限</a></li>
+              <a href="javascript:Filter('proportion',50);" {if condition="$fitervalue['proportion'] eq '50'"} class="activate" {/if}>50㎡以下</a>
+              <a href="javascript:Filter('proportion','50-70');"  {if condition="$fitervalue['proportion'] eq '50-70' "} class="activate" {/if}>50-70㎡</a>
+              <a href="javascript:Filter('proportion','70-90');"  {if condition="$fitervalue['proportion'] eq '70-90' "} class="activate" {/if}>70-90㎡</a>
+              <a href="javascript:Filter('proportion','90-110');"  {if condition="$fitervalue['proportion'] eq '90-110' "} class="activate" {/if}>90-110㎡</a>
+              <a href="javascript:Filter('proportion','110-130');" {if condition="$fitervalue['proportion'] eq '110-130' "} class="activate" {/if} >110-130㎡</a>
+              <a href="javascript:Filter('proportion','130-150');"  {if condition="$fitervalue['proportion'] eq '130-150' "} class="activate" {/if}>130-150㎡</a> 
+              <a href="javascript:Filter('proportion','150-200');"  {if condition="$fitervalue['proportion'] eq '150-200' "} class="activate" {/if}>150-200㎡</a>
+              <a href="javascript:Filter('proportion','200-300');" {if condition="$fitervalue['proportion'] eq '200-300' "} class="activate" {/if} >200-300㎡</a>
+              <a href="javascript:Filter('proportion','300');" {if condition="$fitervalue['proportion'] eq '300'"} class="activate" {/if} >300㎡以上</a>
+            </span>
+            </p>
+            <p><span class="content-title">户型:</span>
+            <span class="content-main">
+              <a href="javascript:Filter('room','');" {if condition="$fitervalue['room'] eq '' "} class="activate" {/if}>不限</a>
+              <a href="javascript:Filter('room','1');" {if condition="$fitervalue['room'] eq 1"} class="activate" {/if}>1室</a>
+              <a href="javascript:Filter('room','2');" {if condition="$fitervalue['room'] eq 2"} class="activate" {/if}>2室</a>
+              <a href="javascript:Filter('room','3');" {if condition="$fitervalue['room'] eq 3"} class="activate" {/if}>3室</a>
+              <a href="javascript:Filter('room','4');" {if condition="$fitervalue['room'] eq 4"} class="activate" {/if}>4室</a>
+              <a href="javascript:Filter('room','5');" {if condition="$fitervalue['room'] eq 5"} class="activate" {/if}>5室</a>
+              <a href="javascript:Filter('room','6');" {if condition="$fitervalue['room'] eq 6"} class="activate" {/if}>5室以上</a>
+            </span>
+            </p>
+              <span class="content-title">其他</span>
+              <div class="dropdown">
+                      <button class="dropbtn">朝向</button>
+                      <div class="dropdown-content">
+                        <a href="javascript:Filter('orientation','');"  {if condition="$fitervalue['orientation'] eq ''"} class="activate" {/if} >不限</a>
+                        <a href="javascript:Filter('orientation','1');"  {if condition="$fitervalue['orientation'] eq 1"} class="activate" {/if} >东</a>
+                        <a href="javascript:Filter('orientation','2');"  {if condition="$fitervalue['orientation'] eq 2"} class="activate" {/if} >西</a>
+                        <a href="javascript:Filter('orientation','3');"  {if condition="$fitervalue['orientation'] eq 3"} class="activate" {/if} >南</a>
+                        <a href="javascript:Filter('orientation','4');"  {if condition="$fitervalue['orientation'] eq 4"} class="activate" {/if} >北</a>
+                        <a href="javascript:Filter('orientation','5');"  {if condition="$fitervalue['orientation'] eq 5"} class="activate" {/if} >东南</a>
+                        <a href="javascript:Filter('orientation','6');"  {if condition="$fitervalue['orientation'] eq 6"} class="activate" {/if} >东北</a>
+                        <a href="javascript:Filter('orientation','7');"  {if condition="$fitervalue['orientation'] eq 7"} class="activate" {/if} >西南</a>
+                        <a href="javascript:Filter('orientation','8');"  {if condition="$fitervalue['orientation'] eq 8"} class="activate" {/if} >西北</a>
+                        <a href="javascript:Filter('orientation','9');"  {if condition="$fitervalue['orientation'] eq 9"} class="activate" {/if} >南北</a>
+                        <a href="javascript:Filter('orientation','10');"  {if condition="$fitervalue['orientation'] eq 10"} class="activate" {/if} >东西</a>
+                      </div>
+                </div>
+                <div class="dropdown">
+                      <button class="dropbtn">房屋类型</button>
+                      <div class="dropdown-content">
+                        <a href="javascript:Filter('purpose','');"  {if condition="$fitervalue['purpose'] eq ''"} class="activate" {/if}>不限</a>
+                        <a href="javascript:Filter('purpose','1');" {if condition="$fitervalue['purpose'] eq 1"} class="activate" {/if} >普通住宅</a>
+                        <a href="javascript:Filter('purpose','2');" {if condition="$fitervalue['purpose'] eq 2"} class="activate" {/if} >公寓</a>
+                        <a href="javascript:Filter('purpose','3');" {if condition="$fitervalue['purpose'] eq 3"} class="activate" {/if} >别墅</a>
+                        <a href="javascript:Filter('purpose','4');" {if condition="$fitervalue['purpose'] eq 4"} class="activate" {/if} >平房/四合院</a>
+                        <a href="javascript:Filter('purpose','5');" {if condition="$fitervalue['purpose'] eq 5"} class="activate" {/if} >其他</a>
+                      </div>
+                </div>
+                <div class="dropdown">
+                      <button class="dropbtn">装修情况</button>
+                      <div class="dropdown-content">
+                        <a href="javascript:Filter('decorate','');"   {if condition="$fitervalue['decorate'] eq ''"} class="activate" {/if}>不限</a>
+                        <a href="javascript:Filter('decorate','1');"  {if condition="$fitervalue['decorate'] eq 1"} class="activate" {/if}>毛坯</a>
+                        <a href="javascript:Filter('decorate','2');"  {if condition="$fitervalue['decorate'] eq 2"} class="activate" {/if}>简单装修</a>
+                        <a href="javascript:Filter('decorate','3');"  {if condition="$fitervalue['decorate'] eq 3"} class="activate" {/if}>中等装修</a>
+                        <a href="javascript:Filter('decorate','4');"  {if condition="$fitervalue['decorate'] eq 4"} class="activate" {/if}>精装修</a>
+                        <a href="javascript:Filter('decorate','5');"  {if condition="$fitervalue['decorate'] eq 5"} class="activate" {/if}>豪华装修</a>
+                      </div>
+                </div>
+                 <div class="dropdown">
+                      <button class="dropbtn">产权信息</button>
+                      <div class="dropdown-content">
+                        <a href="javascript:Filter('prop_type','');"   {if condition="$fitervalue['prop_type'] eq ''"} class="activate" {/if}>不限</a>
+                        <a href="javascript:Filter('prop_type','1');" {if condition="$fitervalue['prop_type'] eq 1"} class="activate" {/if} >商品房</a>
+                        <a href="javascript:Filter('prop_type','2');" {if condition="$fitervalue['prop_type'] eq 2"} class="activate" {/if} >商住两用</a>
+                        <a href="javascript:Filter('prop_type','3');" {if condition="$fitervalue['prop_type'] eq 3"} class="activate" {/if} >经济适用房</a>
+                        <a href="javascript:Filter('prop_type','4');" {if condition="$fitervalue['prop_type'] eq 4"} class="activate" {/if} >使用权</a>
+                        <a href="javascript:Filter('prop_type','5');" {if condition="$fitervalue['prop_type'] eq 5"} class="activate" {/if} >公房</a>
+                        <a href="javascript:Filter('prop_type','6');" {if condition="$fitervalue['prop_type'] eq 6"} class="activate" {/if} >其他</a>
+                      </div>
+                </div> 
+              <p><span class="content-title">已选择条件:</span>
+            <span class="content-dis">
+                {$fitervalue|fitervalue}
+            </span>
+            </p>
+
+        </div>

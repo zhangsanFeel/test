@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>0539房产信息管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <!-- bootstrap -->
+   <link rel="stylesheet" type="text/css" href="__ADMIN__/assets/css/bootstrap.min.css"><!-- 
+   <link rel="stylesheet" type="text/css" href="__ADMIN__/bootstrap/css/default.css"> -->
+<link rel="stylesheet" type="text/css" href="__ADMIN__/bootstrap/css/fileinput.min.css">
+<link href="__ADMIN__/bootstrap/css/fileinput.css" media="all" rel="stylesheet" type="text/css" /> 
+    <!--Basic Styles-->
+     <script type="text/javascript" src="__ADMIN__/library/jqury/jquery-3.1.1.js"></script>
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <!-- select选择框 -->
+  <link media="all" href="__ADMIN__/public/js/jquery.searchableSelect.css" type="text/css"   
+ rel="stylesheet">
+      <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script> 
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+</head>
+<body>
+    {include file="public:header"/}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('rent_house/lst')}">租房信息表</a>
+                    </li>
+                                        <li class="active">修改租房信息</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改租房信息</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="{:url('rent_house/save')}"  method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$rent.id}">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label no-padding-right">标题</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="title" placeholder="" name="title" required="" value="{$rent.title}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="addressName" class="col-sm-2 control-label no-padding-right">出租方式</label>
+                            <div class="col-sm-6">
+                               <button class="btn btn-warning" type="button" id="entire" onclick="entireClick()">整租</button>
+                               <button class="btn btn-defalut" type="button"  id="joint" onclick="rentingClick()">合租</button>
+                               <input type="hidden" name="rent_type" id="renting" value="1">
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="estate_id" class="col-sm-2 control-label no-padding-right">所在小区</label>
+                            <div class="col-sm-6" style="z-index:999">
+                              <select name="estate_id" id="eid" class="form-control" >
+                              {volist name="estates" id="vo"}
+                              <option value="{$vo.id}"  {$rent.estate_id|bilibili=###,$vo.id}>{$vo.name}</option>
+                              {/volist}
+                              </select> &nbsp;&nbsp;&nbsp; 
+                                <script type="text/javascript" src="__ADMIN__/public/js/jquery.searchableSelect.js"></script>
+                                <script>
+                                $(function(){
+                                $('#eid').searchableSelect();
+                                });
+                                </script>
+                        </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="room" class="col-sm-2 control-label no-padding-right">房屋户型</label>
+                            <div class="col-sm-2 form-inline" >
+                                   <input type="number" name="room" id="room" value="{$rent.room}" class="form-control" required maxlength="1" style="width:60%"> 室
+                            </div>
+                            <div class="col-sm-2 form-inline" >
+                                   <input type="number" name="hall" id="hall"  value="{$rent.hall}"  class="form-control" required maxlength="1" style="width:60%"> 厅
+                            </div>
+                            <div class="col-sm-2 form-inline" >
+                                   <input type="number" name="toilet" id="toilet"  value="{$rent.toilet}" class="form-control" required maxlength="1" style="width:60%"> 卫
+                            </div>
+                            <p class="help-block col-sm-4  red"></p>
+                        </div>
+                        
+                       
+                        <div class="form-group" >
+                            <label for="eid" class="col-sm-2 control-label no-padding-right">房屋类型{$rent.decorate}</label>
+                            <div class="col-sm-2">
+                                <select name="purpose" id="" class="form-control" >
+                                    <option >房屋类型</option>
+                                    <option value="1" {$rent.purpose|bilibili=###,1}>普通住宅</option>
+                                    <option value="2" {$rent.purpose|bilibili=###,2}>公寓</option>
+                                    <option value="3" {$rent.purpose|bilibili=###,3}>别墅</option>
+                                    <option value="4" {$rent.purpose|bilibili=###,4}>平房/四合院</option>
+                                    <option value="5" {$rent.purpose|bilibili=###,5}>其他</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="decorate" id="" class="form-control">
+                            <option >装修情况</option>
+                            <option value="1"  {$rent.decorate|bilibili=###,1} >毛坯</option>
+                            <option value="2"  {$rent.decorate|bilibili=###,2} >简单装修</option>
+                            <option value="3"  {$rent.decorate|bilibili=###,3} >中等装修</option>
+                            <option value="4"  {$rent.decorate|bilibili=###,4} >精装修</option>
+                            <option value="5"  {$rent.decorate|bilibili=###,5} >豪华装修</option>
+                                </select>
+                            </div>
+                             <div class="col-sm-2">
+                                <select name="orientation" id="" class="form-control">
+                                        <option >朝向</option>
+                                        <option value="1" {$rent.orientation|bilibili=###,1}>东</option>
+                                        <option value="2" {$rent.orientation|bilibili=###,2}>西</option>
+                                        <option value="3" {$rent.orientation|bilibili=###,3}>南</option>
+                                        <option value="4" {$rent.orientation|bilibili=###,4}>北</option>
+                                        <option value="5" {$rent.orientation|bilibili=###,5}>东南</option>
+                                        <option value="6" {$rent.orientation|bilibili=###,6} >东北</option>
+                                        <option value="7" {$rent.orientation|bilibili=###,7}>西南</option>
+                                        <option value="8" {$rent.orientation|bilibili=###,8}>西北</option>
+                                        <option value="9" {$rent.orientation|bilibili=###,9}>南北</option>
+                                        <option value="10" {$rent.orientation|bilibili=###,10}>东西</option>
+                                </select>
+                            </div>
+                            <p class="help-block  col-sm-4 red"></p>
+                        </div>
+
+
+                        <div class="form-group" id="property" style="display:none">
+                            <label for="eid" class="col-sm-2 control-label no-padding-right">出租房介绍</label>
+                            <div class="col-sm-2">
+                                <select name="property" class="form-control">
+                                    <option value="1" {$rent.property|bilibili=###,1}>主卧</option>
+                                    <option value="2" {$rent.property|bilibili=###,2}>次卧</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="setSax"  class="form-control" >
+                                    <option value="1" {$rent.property|bilibili=###,1}>男女不限</option>
+                                    <option value="2" {$rent.property|bilibili=###,2}>限男生</option>
+                                    <option value="3" {$rent.property|bilibili=###,3}>限女生</option>
+                                    <option value="4" {$rent.property|bilibili=###,4}>限夫妻</option>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 col-sm-offset-2 red"></p>
+                        </div>
+                         <div class="form-group">
+                            <label for="floor" class="col-sm-2 control-label no-padding-right">楼层</label>
+                            <div class="col-sm-2 form-inline" >
+                                   <input type="number" name="floor" id="floor" maxlength="5" value="{$rent.floor}" class="form-control" style="width:50%" required >&nbsp; &nbsp;楼
+                            </div>
+                            <div class="col-sm-2 form-inline" >
+                                   共 <input type="number" name="all_floor" id="all_floor" maxlength="5" value="{$rent.all_floor}"   class="form-control" style="width:50%"> 层
+                            </div>
+                            <p class="help-block col-sm-4 col-sm-offset-3 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="proportion" class="col-sm-2 control-label no-padding-right">面积</label>
+                            <div class="col-sm-2 form-inline" >
+                                  <input type="text" name="proportion" id="proportion" maxlength="5"  value="{$rent.proportion}"    class="form-control" style="width:50%"> 平方米
+                            </div>
+                            <div class="col-sm-2">
+                                <select name="actuality" id="" class="form-control" required>
+                                    <option>房屋现状</option>
+                                    <option value="1" {$rent.actuality|bilibili=###,1} >目前闲置</option>
+                                    <option value="2" {$rent.actuality|bilibili=###,2} >现已居住</option>
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 col-sm-offset-2 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="carseat" class="col-sm-2 control-label no-padding-right">附件</label>
+                            <div class="col-sm-6 form-inline" >
+                                <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="1" name="lift[]" {$rent.lift|childvery=###,1}>
+                                <span class="text">床</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="2" name="lift[]" {$rent.lift|childvery=###,2}>
+                                <span class="text">电视</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="3" name="lift[]" {$rent.lift|childvery=###,3}>
+                                <span class="text">空调</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="4" name="lift[]" {$rent.lift|childvery=###,4}>
+                                <span class="text">冰箱</span>
+                                </label>
+                                  <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="5" name="lift[]" {$rent.lift|childvery=###,5}>
+                                <span class="text">热水器</span>
+                                </label>
+                                <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="6" name="lift[]" {$rent.lift|childvery=###,6}>
+                                <span class="text">宽带</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="7" name="lift[]" {$rent.lift|childvery=###,7}>
+                                <span class="text">可做饭</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="8" name="lift[]" {$rent.lift|childvery=###,8}>
+                                <span class="text">独立卫生间</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="9" name="lift[]" {$rent.lift|childvery=###,9}>
+                                <span class="text">阳台</span>
+                                </label>
+                                  <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="10" name="lift[]" {$rent.lift|childvery=###,10}>
+                                <span class="text">衣柜</span>
+                                </label>
+                                <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="11" name="lift[]" {$rent.lift|childvery=###,11}>
+                                <span class="text">沙发</span>
+                                </label>
+                                 <label class="checkbox-inline">
+                                <input type="checkbox" class="colored-warning"  value="12" name="lift[]" {$rent.lift|childvery=###,12}>
+                                <span class="text">暖气</span>
+                                </label>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                            <label for="school" class="col-sm-2 control-label no-padding-right">已上传的图片</label>
+                            <div class="col-sm-6">
+                                {volist name="imgs" id="vo"}
+
+                                <img src="__IMG__/{$vo.path}" class="img-thumbnail del" data-type="1" style="width:250px;cursor:pointer;height:200px"  >
+                                <input type="checkbox" name="delimg[]" value="{$vo.id}" style="display:none">
+                                {/volist}
+                            </div>
+                            <p class="help-block col-sm-4 red">点击选择删除</p>
+                        </div> 
+                         <div class="form-group">
+                        <label for="carseat" class="col-sm-2 control-label no-padding-right">标签</label>
+                        <div class="col-sm-6 form-inline" >
+                                {volist name="labels" id="vo"}
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" class="colored-warning" name="label[]" value="{$vo.id}" {$rent.label|childvery=###,$vo.id}>
+                                    <span class="text">{$vo.name}</span>
+                                    </label>
+                                {/volist}
+                         </div>       
+                        </div>       
+
+                         <div class="form-group">
+                            <label for="img" class="col-sm-2 control-label no-padding-right">上传图片</label>
+                            <div class="col-sm-6">
+                                <input id="file-4" class="file"  type="file" multiple="" name="img[]" data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="" >
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div> 
+                        
+                    <div class="form-group">
+                            <label for="price" class="col-sm-2 control-label no-padding-right">总价格</label>
+                            <div class="col-sm-2 form-inline">
+                                <input class="form-control" id="price" onblur="onmouseupget()" placeholder="" value="{$rent.price}"  style="width:40%" name="price" required="" type="text"><span style="padding-left:10px;font-size:16px;color:red">元/月</span>
+                            </div>
+                             <div class="col-sm-4 form-inline">
+                                 <select name="payment_type" id="" class="form-control" required>
+                            <option>付款方式</option>
+                            <option value="1" {$rent.payment_type|bilibili=###,1}>付1押1</option>
+                            <option value="2" {$rent.payment_type|bilibili=###,2}>付1押2</option>
+                            <option value="3" {$rent.payment_type|bilibili=###,3}>付2押1</option>
+                            <option value="4" {$rent.payment_type|bilibili=###,4}>付2押2</option>
+                            <option value="5" {$rent.payment_type|bilibili=###,5}>付3押1</option>
+                            <option value="6" {$rent.payment_type|bilibili=###,6} >付3押2</option>
+                            <option value="7" {$rent.payment_type|bilibili=###,7}>面议</option>
+                            <option value="8" {$rent.payment_type|bilibili=###,8}>半年付</option>
+                            <option value="9" {$rent.payment_type|bilibili=###,9}>年付</option>
+                            <option value="10" {$rent.payment_type|bilibili=###,10}>半年付押1</option>
+                            <option value="11" {$rent.payment_type|bilibili=###,11}>半年付不押</option>
+                            <option value="12" {$rent.payment_type|bilibili=###,12}>年付不押</option>
+                            <option value="13" {$rent.payment_type|bilibili=###,13}>年付押1</option>
+                            </select>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>  
+                        <div class="form-group">
+                            <label for="lightspot" class="col-sm-2 control-label no-padding-right">房源亮点</label>
+                            <div class="col-sm-6">
+                               <textarea name="lightspot" class="form-control" id="" cols="30" rows="10">{$rent.lightspot}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="house_type" class="col-sm-2 control-label no-padding-right">户型介绍</label>
+                            <div class="col-sm-6">
+                               <textarea name="house_type" class="form-control" id="" cols="30" rows="10">{$rent.lightspot}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="decorate_desc" class="col-sm-2 control-label no-padding-right">装修描述</label>
+                            <div class="col-sm-6">
+                               <textarea name="decorate_desc" class="form-control" id="" cols="30" rows="10">{$rent.decorate_desc}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="mating" class="col-sm-2 control-label no-padding-right">周边配套</label>
+                            <div class="col-sm-6">
+                               <textarea name="mating" class="form-control" id="" cols="30" rows="10">{$rent.mating}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="estate_desc" class="col-sm-2 control-label no-padding-right">小区介绍</label>
+                            <div class="col-sm-6">
+                               <textarea name="estate_desc" class="form-control" id="" cols="30" rows="10">{$rent.estate_desc}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+
+   
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+  
+    <script src="__ADMIN__/bootstrap/js/fileinput.js" type="text/javascript"></script>
+    <script src="__ADMIN__/bootstrap/js/fileinput_locale_zh.js" type="text/javascript"></script>
+    <script src="__ADMIN__/assets/js/bootstrap.min.js" type="text/javascript"></script> 
+    <!-- select选择筛选框 -->
+    
+<script type="text/javascript">
+//初始化fileinput控件（第一次初始化）
+initFileInput("file-5","{:url('lists/product_file')}");
+initFileInput("file-4","{:url('lists/product_file')}");
+function initFileInput(ctrlName, uploadUrl) {    
+    var control = $('#' + ctrlName); 
+    control.fileinput({
+           language: 'zh', //设置语言
+                uploadUrl:uploadUrl, //上传的地址
+               allowedFileExtensions: ['jpg', 'gif', 'png','jpeg'],//接收的文件后缀
+               //uploadExtraData:{"id": 1, "fileName":'123.mp3'},
+                uploadAsync: false, //默认异步上传
+                showUpload:false, //是否显示上传按钮
+                showRemove :false, //显示移除按钮
+                showPreview :true, //是否显示预览
+                showCaption:false,//是否显示标题
+                browseClass:"btn btn-primary", //按钮样式    
+               dropZoneEnabled: false,//是否显示拖拽区域
+               //minImageWidth: 50, //图片的最小宽度
+               //minImageHeight: 50,//图片的最小高度
+               //maxImageWidth: 1000,//图片的最大宽度
+               //maxImageHeight: 1000,//图片的最大高度
+                //maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+               //minFileCount: 0,
+                maxFileCount:24, //表示允许同时上传的最大文件个数
+                enctype:'multipart/form-data',
+               validateInitialCount:true,
+                previewFileIcon: "<iclass='glyphicon glyphicon-king'></i>",
+               msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+           }).on("fileuploaded", function (event, data, previewId, index){
+                 
+});
+}
+
+function rentingClick(){
+    $("#joint").addClass("btn-warning").removeClass("btn-defalut");
+    $("#entire").addClass("btn-defalut").removeClass("btn-warning");
+    $("#renting").val(1);
+     $("#property").css("display","block");
+}
+function entireClick(){
+     $("#entire").addClass("btn-warning").removeClass("btn-defalut");
+    $("#joint").addClass("btn-defalut").removeClass("btn-warning");
+    $("#renting").val(2);
+    $("#property").css("display","none");
+}
+$(function(){
+     var rent_type="{$rent['rent_type']}"; 
+     
+     if(rent_type==1){
+        entireClick();
+     }else if(rent_type==2){      
+        rentingClick();
+     }
+       $(".del").click(function(){
+            var border=$(this).attr("data-type");
+
+            if(border==1){
+            $(this).css("border","1px solid #f00");
+            $(this).next().prop("checked",true); 
+            $(this).attr("data-type",2); 
+            }else{
+            $(this).css("border","1px solid #eee");
+            $(this).next().prop("checked",null);
+            $(this).attr("data-type",1);    
+            }
+        
+       
+    });
+     
+})
+
+
+</script>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>0539房产信息管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+    
+     <!--Page Related styles-->
+    <link href="__ADMIN__/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <style>
+        table,thead th{
+        text-align:center;
+        }
+    </style>
+
+    
+</head>
+<body>
+    {include file="public:header"/}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">地址管理</a>
+                    </li>
+                                        <li class="active">地址列表</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<a tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" href="{:url('rent_house/add')}"> <i class="fa fa-plus"></i> Add</a>
+<div class="row">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="widget">
+                                <div class="widget-header ">
+                                    <span class="widget-caption">地址列表</span>
+                                    <div class="widget-buttons">
+                                        <a href="#" data-toggle="maximize">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                        <a href="#" data-toggle="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                        <a href="#" data-toggle="dispose">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="table-toolbar">
+                                    </div>
+                                    <table class="table table-striped table-hover table-bordered" id="editabledatatable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>id</th>
+                                                <th>排序</th>
+                                                <th>标题</th>
+                                                <th>描述</th>
+                                                <th>创建时间</th>
+                                                <th>状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            {volist name="rents" id="vo"}
+                                            <tr>
+                                                <td>{$vo.id}</td>
+                                                <td><input type="text" data-id="{$vo.id}" class="listorder" value="{$vo.listorder}" style="width:50px"></td>
+                                                <td>{$vo.title}</td>
+                                                <td  style="font-weight: bold">{$vo.estate_id|estate_name} ,{$vo.rent_type|rent_type}, {$vo.room}室{$vo.hall}厅{$vo.toilet}卫 , {$vo.decorate|decorate} , {$vo.proportion}㎡ , {$vo.price}元/月</td>
+                                                 <td>{$vo.create_time}</td>
+                                                <td><a href="{:url('rent_house/status',['id'=>$vo.id,'status'=>$vo.status==1?-1:1])}">{$vo.status|status}</a></td>
+                                                <td>
+                                                    <a href="{:url('rent_house/edit',['id'=>$vo.id])}" class="btn btn-info btn-xs"><i class="fa fa-edit"></i>更新</a>
+                                                    <a href="{:url('rent_house/delete',['id'=>$vo.id])}" class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>删除</a>
+                                                </td>
+
+                                            </tr> 
+                                            {/volist}
+                                        </tbody>
+                                    </table>
+                                    <div>{$rents->render()}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/public/js/common.js"></script>
+    <script>
+
+       var SCOPE={
+        'listorder':"{:url('rent_house/listorder')}",
+        }; 
+               
+    </script>
+
+
+</body></html>

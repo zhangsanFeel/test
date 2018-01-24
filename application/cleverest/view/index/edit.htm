@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>0539房产信息管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+<!--Page Related styles-->
+    <link href="__ADMIN__/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+    {include file="public:header"/}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li class="active">修改账号密码</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">修改账号密码</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" action="" method="post">
+                        <input type="hidden" name="id" value="{$admin.id}">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label no-padding-right">更改用户名</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="username" placeholder="" name="username" value="{$admin.username}"  type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>      
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label no-padding-right">原密码</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="password" placeholder="" name="password"   type="password">
+                            </div>
+                            <p class="help-block col-sm-4 ">密码不填写则不更新密码</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1" class="col-sm-2 control-label no-padding-right">更改密码</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="password1" placeholder="" name="password1"   type="password">
+                            </div>
+                            <p class="help-block col-sm-4 ">密码不填写则不更新密码</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2" class="col-sm-2 control-label no-padding-right">确认密码</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="password2" placeholder="" name="password2"  type="password">
+                            </div>
+                            <p class="help-block col-sm-4 ">密码不填写则不更新密码</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+     <!--Page Related Scripts-->
+    <script src="__ADMIN__/assets/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="__ADMIN__/assets/js/datatable/dataTables.tableTools.min.js"></script>
+    <script src="__ADMIN__/assets/js/datatable/dataTables.bootstrap.min.js"></script>
+    <script src="__ADMIN__/assets/js/datatable/datatables-init.js"></script>
+
+
+</body></html>
