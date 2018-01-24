@@ -10,10 +10,10 @@
 <meta name="Author" content="024" />
 
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<LINK href="/house/public/static/index/style/style.css" rel=stylesheet>
-<LINK href="/house/public/static/index/style/page.css" rel=stylesheet>
-<LINK href="/house/public/static/index/style/bootstrap.css" rel=stylesheet>
-<script language="JavaScript" type="text/javascript" src="/house/public/static/index/style/jquery.js"></script>
+<LINK href="/test/public/static/index/style/style.css" rel=stylesheet>
+<LINK href="/test/public/static/index/style/page.css" rel=stylesheet>
+<LINK href="/test/public/static/index/style/bootstrap.css" rel=stylesheet>
+<script language="JavaScript" type="text/javascript" src="/test/public/static/index/style/jquery.js"></script>
 <script>
 function Filter(field,value){  
         
@@ -214,7 +214,7 @@ $(function(){
                 <ul>
                   <?php if(is_array($secondes) || $secondes instanceof \think\Collection || $secondes instanceof \think\Paginator): $i = 0; $__LIST__ = $secondes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <li>
-                        <a href="<?php echo url('second_house/main',['id'=>$vo['id']]); ?>" class="left main-title"><img src="/house/public/uploads/<?php echo img($vo['id']); ?>" alt="" style="width:213px;height:160px"/></a>
+                        <a href="<?php echo url('second_house/main',['id'=>$vo['id']]); ?>" class="left main-title"><img src="/test/public/uploads/<?php echo img($vo['id']); ?>" alt="" style="width:213px;height:160px"/></a>
                         <div class="page-content left">
                               <h3><a href="<?php echo url('second_house/main',['id'=>$vo['id']]); ?>"><?php echo $vo['title']; ?></a><span class="label-blue">新上</span><span class="label-green">房主自荐</span></h3>
                               <p><?php echo estate_name($vo['estate_id']); ?> | <?php echo $vo['room']; ?>室<?php echo $vo['hall']; ?>厅<?php echo $vo['toilet']; ?>卫 | <?php echo floatval($vo['proportion']); ?>平米 | <?php echo orientation($vo['orientation']); ?> | <?php echo decorate($vo['decorate']); ?></p>
@@ -241,7 +241,7 @@ $(function(){
                 <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-name">阿里巴巴</span>    
                         <span class="sidebar-tel">13563990501</span>    
@@ -257,7 +257,7 @@ $(function(){
                 <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-name">阿里巴巴</span>    
                         <span class="sidebar-tel">13563990501</span>    
@@ -273,7 +273,7 @@ $(function(){
                 <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-name">阿里巴巴</span>    
                         <span class="sidebar-tel">13563990501</span>    
@@ -289,7 +289,7 @@ $(function(){
                 <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-name">阿里巴巴</span>    
                         <span class="sidebar-tel">13563990501</span>    
@@ -312,7 +312,7 @@ $(function(){
               <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-price">3500元/㎡</span>       
                     </div>
@@ -325,7 +325,7 @@ $(function(){
                <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-price">3500元/㎡</span>       
                     </div>
@@ -338,7 +338,7 @@ $(function(){
                <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-price">3500元/㎡</span>       
                     </div>
@@ -351,7 +351,7 @@ $(function(){
                <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-price">3500元/㎡</span>       
                     </div>
@@ -364,7 +364,7 @@ $(function(){
                <li>
                   <div>
                     <a href="#">
-                    <img src="/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                    <img src="/test/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                     <div class="sidebar-user">
                         <span class="sidebar-price">3500元/㎡</span>       
                     </div>

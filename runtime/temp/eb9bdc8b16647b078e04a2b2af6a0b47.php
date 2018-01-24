@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:70:"D:\phpStudy\WWW\house\public/../application/index\view\user\index.html";i:1516500310;s:63:"D:\phpStudy\WWW\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:71:"D:\phpStudy\WWW\test\public/../application/index\view\user\entrust.html";i:1516679110;s:62:"D:\phpStudy\WWW\test\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,12 +11,35 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
-<LINK href="/house/public/static/index/style/style.css" rel=stylesheet>
-<LINK href="/house/public/static/index/style/meGrass.css" rel=stylesheet>
-<LINK href="/house/public/static/index/style/bootstrap.css" rel=stylesheet>
-<script language="JavaScript" type="text/javascript" src="/house/public/static/index/style/jquery.js"></script>
+<LINK href="/test/public/static/index/style/style.css" rel=stylesheet>
+<LINK href="/test/public/static/index/style/meGrass.css" rel=stylesheet>
+<LINK href="/test/public/static/index/style/bootstrap.css" rel=stylesheet>
+<script language="JavaScript" type="text/javascript" src="/test/public/static/index/style/jquery.js"></script>
+
+    
 
 <!--[if IE 6]><script type="text/javascript" src="js/DD_belatedPNG.js"></script><![endif]-->
+<script>
+$(function(){
+	$('.h2').click(function(){
+		$(this).addClass('active');
+		$('.h1').removeClass('active');
+		$('.rents').css('display','block');
+		$('.seconds').css('display','none');
+	});
+
+	$('.h1').click(function(){
+		$(this).addClass('active');
+		$('.h2').removeClass('active');
+		$('.rents').css('display','none');
+		$('.seconds').css('display','block');
+	});
+
+
+})
+
+
+</script>
 </head>
 <body>	
 
@@ -47,89 +70,88 @@
 <div class="me-main">
 		<!-- 左边侧边栏 -->
 		<div class="me-sidebar">
-			<div class="me-img"><img src="/house/public/uploads/<?php echo $user['img']; ?>" alt="" /></div>
+			<div class="me-img"><img src="/test/public/uploads/<?php echo $user['img']; ?>" alt="" /></div>
 			<div class="me-name">欢迎您.<?php if($user['name'] == ''): ?> <?php echo phone($user['phone']); else: ?>  <?php echo $user['name']; endif; ?></div>
 			<div class="me-nav">
 				<ul>
-					<li class="active"><a href="#">首页</a></li>
-					<li><a href="<?php echo url('user/collect'); ?>">关注房源</a></li>
-					<li><a href="<?php echo url('user/subscribe'); ?>">预约清单</a></li>
+					<li><a href="<?php echo url('user/index'); ?>">首页</a></li>
+					<li  ><a href="<?php echo url('user/collect'); ?>">关注房源</a></li>
+					<li  > <a href="<?php echo url('user/subscribe'); ?>">预约清单</a></li>
 					<li><a href="<?php echo url('user/broker'); ?>">我关注的经纪人</a></li>
-					<li><a href="<?php echo url('user/entrust'); ?>">我的委托</a></li>
+					<li class="active" ><a href="<?php echo url('user/entrust'); ?>">我的委托</a></li>
 				</ul>
 			</div>
 					
 		</div>
 		<!-- 右边主题 -->
 		<div class="me-content">
-			<h2>共<span class="red">3</span>套关注房源</h2>
-			<div class="me-nav">
+			<h2>共<span class="red"><?php echo $count; ?></span>次委托</h2>
+			<div class="me-nav" style="margin-bottom:50px">
 				<ul>
-					<li  class="active"><a href="#">二手房</a></li>
-					<li><a href="#">新房</a></li>
+					<li class=" h1 active"><a href="#">二手房</a></li>
+					<li class="h2"><a href="#">新房</a></li>
 				</ul>
 			</div>
-			<div class="me-house">
-				<ul>
-					<li>
-						<button>取消关注</button>
-						<div class="me-img"><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=1fe3e75cc3fdfc03e178e4bae43e87a9/aec379310a55b3193cdb93d743a98226cffc1775.jpg" alt="" /></div>
-						<div class="me-info">
-							<h3><a href="#">业主诚心出售中间楼层业主随时签约</a></h3>
-							<p>名佳花园一区   2室1厅  74.99平米 南 北</p>
-							<p>北七家二手房 / 中楼层(共7层) / 1999年建</p>
-						</div>
-						<div class="me-price">
-							<p class="red"><span>308</span>万</p>
-							<p class="smail">41073 元/m²</p>
-						</div>
-						<div class="clear"></div>
-					</li>
-					<li>
-						<button>取消关注</button>
-						<div class="me-img"><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=1fe3e75cc3fdfc03e178e4bae43e87a9/aec379310a55b3193cdb93d743a98226cffc1775.jpg" alt="" /></div>
-						<div class="me-info">
-							<h3><a href="#">业主诚心出售中间楼层业主随时签约</a></h3>
-							<p>名佳花园一区   2室1厅  74.99平米 南 北</p>
-							<p>北七家二手房 / 中楼层(共7层) / 1999年建</p>
-						</div>
-						<div class="me-price">
-							<p class="red"><span>308</span>万</p>
-							<p class="smail">41073 元/m²</p>
-						</div>
-						<div class="clear"></div>
-					</li>
-					<li>
-						<button>取消关注</button>
-						<div class="me-img"><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=1fe3e75cc3fdfc03e178e4bae43e87a9/aec379310a55b3193cdb93d743a98226cffc1775.jpg" alt="" /></div>
-						<div class="me-info">
-							<h3><a href="#">业主诚心出售中间楼层业主随时签约</a></h3>
-							<p>名佳花园一区   2室1厅  74.99平米 南 北</p>
-							<p>北七家二手房 / 中楼层(共7层) / 1999年建</p>
-						</div>
-						<div class="me-price">
-							<p class="red"><span>308</span>万</p>
-							<p class="smail">41073 元/m²</p>
-						</div>
-						<div class="clear"></div>
-					</li>
-					<li>
-						<button>取消关注</button>
-						<div class="me-img"><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=1fe3e75cc3fdfc03e178e4bae43e87a9/aec379310a55b3193cdb93d743a98226cffc1775.jpg" alt="" /></div>
-						<div class="me-info">
-							<h3><a href="#">业主诚心出售中间楼层业主随时签约</a></h3>
-							<p>名佳花园一区   2室1厅  74.99平米 南 北</p>
-							<p>北七家二手房 / 中楼层(共7层) / 1999年建</p>
-						</div>
-						<div class="me-price">
-							<p class="red"><span>308</span>万</p>
-							<p class="smail">41073 元/m²</p>
-						</div>
-						<div class="clear"></div>
-					</li>
-				</ul>
-			</div>
-			
+			 <div class="widget-body seconds" >
+	            <table class="table table-striped table-hover table-bordered" id="editabledatatable">
+	                <thead>
+	                    <tr role="row">
+	                        <th>id</th>
+	                        <th>预约房源</th>
+	                        <th>评价</th>
+	                        <th>带看经纪人</th>
+	                        <th>评分</th>
+	                        <th>状态</th>
+	                    </tr>
+	                </thead>
+
+	                <tbody>
+	                    <?php if(is_array($seconds) || $seconds instanceof \think\Collection || $seconds instanceof \think\Paginator): $i = 0; $__LIST__ = $seconds;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+	                    <tr>
+	                        <td><?php echo $vo['id']; ?></td>
+	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
+	                        <td><?php echo title_substr($vo['evaluate']); ?></td>
+	                        <td><a href="<?php echo url('broker/user',['id'=>$vo['broker_id']]); ?>" target="_blank"><?php echo broker_name($vo['broker_id']); ?></a></td>
+	                         <td><?php echo $vo['grade']; ?>分</td>
+	                        <td><?php echo house_type($vo['status']); ?></td>
+	                     </tr>
+	                    <?php endforeach; endif; else: echo "" ;endif; ?>
+	                </tbody>
+	            </table>
+	            <div><?php echo $rents->render(); ?></div>
+	        </div>
+	        <div class="widget-body rents" style="display:none;" >
+	            <table class="table table-striped table-hover table-bordered" id="editabledatatable">
+	                <thead>
+	                    <tr role="row">
+	                        <th>id</th>
+	                        <th>预约房源</th>
+	                        <th>描述</th>
+	                        <th>预留姓名</th>
+	                        <th>创建时间</th>
+	                        <th>状态</th>
+	                        <th>操作</th>
+	                    </tr>
+	                </thead>
+
+	                <tbody>
+	                    <?php if(is_array($rents) || $rents instanceof \think\Collection || $rents instanceof \think\Paginator): $i = 0; $__LIST__ = $rents;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+	                    <tr>
+	                        <td><?php echo $vo['id']; ?></td>
+	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
+	                        <td><?php echo $vo['desc']; ?></td>
+	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                         <td><?php echo create_time($vo['create_time']); ?></td>
+	                        <td><?php echo house_type($vo['status']); ?></td>
+	                        <td>
+	                            <a href="<?php echo url('rent_house/delete',['id'=>$vo['id']]); ?>"  class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>取消预约</a>
+	                        </td>
+	                    </tr>
+	                    <?php endforeach; endif; else: echo "" ;endif; ?>
+	                </tbody>
+	            </table>
+	            <div><?php echo $rents->render(); ?></div>
+	        </div>
 		</div>
 		<div class="clear"></div>
 	</div>
