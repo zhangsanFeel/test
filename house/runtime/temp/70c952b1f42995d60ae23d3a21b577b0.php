@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"D:\phpStudy\WWW\test\house\public/../application/index\view\broker\user.html";i:1516761979;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\broker.html";i:1516760263;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"D:\phpStudy\WWW\test\house\public/../application/index\view\broker\user.html";i:1516763812;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\broker.html";i:1516760263;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -440,31 +440,12 @@
             <!-- 形成安排 -->
             <div class="authentication ">
                 <h4>服务行程</h4>
+                <?php if(is_array($looks) || $looks instanceof \think\Collection || $looks instanceof \think\Paginator): $i = 0; $__LIST__ = $looks;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                 <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
+                    <p><span class="bold-1">[最新带看]</span><?php echo date("Y-m-d",time($vo['update_time'])); ?></p>
+                    <p>带看客户看房<a href="#"><?php echo title($vo['house_id'],$vo['house_type']); ?></a>等3套</p>
                 </div>
-                
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
             </div>
       </div>
       <div class="clear"></div>

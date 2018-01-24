@@ -794,12 +794,12 @@ function title($house_id,$house_type){
 	
 	if($house_type==1){
 		$house=model('second_house')->get($house_id);	
-		$str='<a href="'.url('index/second_house/main',['id'=>$house_id]).'"  target="_blank" style="color:#f00">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
+		$str='<a href="'.url('index/second_house/main',['id'=>$house_id]).'"  target="_blank" class="red">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
 		$str.=floatval($house['price']).'万</a>';
 	}elseif($house_type==2){
 		$house=model('rent_house')->get($house_id);	
 
-		$str='<a href="'.url('index/rent_house/main',['id'=>$house_id]).'"  target="_blank"  style="color:#f00">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
+		$str='<a href="'.url('index/rent_house/main',['id'=>$house_id]).'"  target="_blank"  class="red">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
 
 		$str.= floatval($house['price']) .'元/月 '.payment_type($house['payment_type']).'</a>';
 	}else{

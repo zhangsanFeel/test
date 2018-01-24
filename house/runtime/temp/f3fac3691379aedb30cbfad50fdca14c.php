@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/index\view\user\subscribe.html";i:1516764628;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,10 +11,10 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
-<LINK href="__INDEX__/style/style.css" rel=stylesheet>
-<LINK href="__INDEX__/style/meGrass.css" rel=stylesheet>
-<LINK href="__INDEX__/style/bootstrap.css" rel=stylesheet>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/jquery.js"></script>
+<LINK href="/test/house/public/static/index/style/style.css" rel=stylesheet>
+<LINK href="/test/house/public/static/index/style/meGrass.css" rel=stylesheet>
+<LINK href="/test/house/public/static/index/style/bootstrap.css" rel=stylesheet>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jquery.js"></script>
 
     
 
@@ -41,27 +42,50 @@ $(function(){
 </script>
 </head>
 <body>	
-{include file="public:header" /}
+
+
+
+
+
+	<div class="nav">
+    	<ul>
+        	<li><a href="<?php echo url('index/index'); ?>" title="网站首页">网站首页</a></li>
+                         <li><a href="<?php echo url('second_house/index'); ?>" title="二手房">二手房</a></li>
+                        <li><a href="<?php echo url('rent_house/index'); ?>" title="租房">租房</a></li>
+                        <li><a href="<?php echo url('broker/index'); ?>" title="经纪人">经纪人</a></li>
+                        <li><a href="<?php echo url('house_entrust/index'); ?>" title="卖房委托">卖房委托</a></li>
+      </ul>   
+      <div class="login">
+          <?php if($user): ?>
+              欢迎您,<a href="<?php echo url('user/index'); ?>"><?php echo phone($user['phone']); ?></a>/ <a href="<?php echo url('login/logout'); ?>">退出</a>
+          <?php else: ?>
+           <a href="<?php echo url('login/index'); ?>">登陆</a> / <a href="<?php echo url('login/login'); ?>">注册</a>
+          <?php endif; ?>
+      </div>   
+    </div>
+    
+</div>
+<div class="clear"></div> 
 
 <div class="me-main">
 		<!-- 左边侧边栏 -->
 		<div class="me-sidebar">
-			<div class="me-img"><img src="__IMG__/{$user.img}" alt="" /></div>
-			<div class="me-name">欢迎您.{if condition="$user.name eq '' "} {$user.phone|phone} {else/}  {$user.name} {/if}</div>
+			<div class="me-img"><img src="/test/house/public/uploads/<?php echo $user['img']; ?>" alt="" /></div>
+			<div class="me-name">欢迎您.<?php if($user['name'] == ''): ?> <?php echo phone($user['phone']); else: ?>  <?php echo $user['name']; endif; ?></div>
 			<div class="me-nav">
 				<ul>
-					<li><a href="{:url('user/index')}">首页</a></li>
-					<li  class="active" ><a href="{:url('user/collect')}">关注房源</a></li>
-					<li  > <a href="{:url('user/subscribe')}">预约清单</a></li>
-					<li><a href="{:url('user/broker')}">我关注的经纪人</a></li>
-					<li ><a href="{:url('user/entrust')}">我的委托</a></li>
+					<li><a href="<?php echo url('user/index'); ?>">首页</a></li>
+					<li  class="active" ><a href="<?php echo url('user/collect'); ?>">关注房源</a></li>
+					<li  > <a href="<?php echo url('user/subscribe'); ?>">预约清单</a></li>
+					<li><a href="<?php echo url('user/broker'); ?>">我关注的经纪人</a></li>
+					<li ><a href="<?php echo url('user/entrust'); ?>">我的委托</a></li>
 				</ul>
 			</div>
 					
 		</div>
 		<!-- 右边主题 -->
 		<div class="me-content">
-			<h2>共<span class="red">{$count}</span>次委托</h2>
+			<h2>共<span class="red"><?php echo $count; ?></span>次委托</h2>
 			<div class="me-nav" style="margin-bottom:50px">
 				<ul>
 					<li class=" h1 active"><a href="#">二手房</a></li>
@@ -83,38 +107,38 @@ $(function(){
 	                </thead>
 
 	                <tbody>
-	                    {volist name="seconds" id="vo"}
+	                    <?php if(is_array($seconds) || $seconds instanceof \think\Collection || $seconds instanceof \think\Paginator): $i = 0; $__LIST__ = $seconds;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 	                    <tr>
-	                        <td>{$vo.id}</td>
-	                        <td>{:title($vo.house_id,$vo.house_type)}</td>
-	                        <td>{$vo.desc}</td>
-	                        <td>{$vo.name} {$vo.sex|sex}</td>
-	                         <td>{$vo.create_time|create_time}</td>
-	                        <td>{$vo.status|house_type}</td>
+	                        <td><?php echo $vo['id']; ?></td>
+	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
+	                        <td><?php echo $vo['desc']; ?></td>
+	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                         <td><?php echo create_time($vo['create_time']); ?></td>
+	                        <td><?php echo house_type($vo['status']); ?></td>
 	                        <td>
 	                        	
 										
 	                        	
-	                        	{if condition="$vo.status eq 3"}
-								<form action="{:url('rent_house/delete')}" method="post">
-									<input type="hidden" name="id" value="{$vo.id}" />
+	                        	<?php if($vo['status'] == 3): ?>
+								<form action="<?php echo url('rent_house/delete'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
 									<button class="tag-fense" type="submit"><i class="fa fa-trash-o"></i>取消预约</button>
 								</form>
-	                        	{elseif condition="$vo.status eq 2"/}
-	                        	<form action="{:url('user/grade')}" method="post">
-									<input type="hidden" name="id" value="{$vo.id}" />
-									<input type="hidden" name="status" value="{$vo.status}" />
+	                        	<?php elseif($vo['status'] == 2): ?>
+	                        	<form action="<?php echo url('user/grade'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
+									<input type="hidden" name="status" value="<?php echo $vo['status']; ?>" />
 									<button class="tag-blue" type="submit"><i class="fa fa-trash-o"></i>进行评分</button>
 								</form>
-	                        	{/if}
+	                        	<?php endif; ?>
 
 	                        	
 	                        </td>
 	                     </tr>
-	                    {/volist}
+	                    <?php endforeach; endif; else: echo "" ;endif; ?>
 	                </tbody>
 	            </table>
-	            <div>{$rents->render()}</div>
+	            <div><?php echo $rents->render(); ?></div>
 	        </div>
 	        <div class="widget-body rents" style="display:none;" >
 	            <table class="table table-striped table-hover table-bordered" id="editabledatatable">
@@ -131,22 +155,22 @@ $(function(){
 	                </thead>
 
 	                <tbody>
-	                    {volist name="rents" id="vo"}
+	                    <?php if(is_array($rents) || $rents instanceof \think\Collection || $rents instanceof \think\Paginator): $i = 0; $__LIST__ = $rents;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 	                    <tr>
-	                        <td>{$vo.id}</td>
-	                        <td>{:title($vo.house_id,$vo.house_type)}</td>
-	                        <td>{$vo.desc}</td>
-	                        <td>{$vo.name} {$vo.sex|sex}</td>
-	                         <td>{$vo.create_time|create_time}</td>
-	                        <td>{$vo.status|house_type}</td>
+	                        <td><?php echo $vo['id']; ?></td>
+	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
+	                        <td><?php echo $vo['desc']; ?></td>
+	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                         <td><?php echo create_time($vo['create_time']); ?></td>
+	                        <td><?php echo house_type($vo['status']); ?></td>
 	                        <td>
-	                            <a href="{:url('rent_house/delete',['id'=>$vo.id])}"  class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>取消预约</a>
+	                            <a href="<?php echo url('rent_house/delete',['id'=>$vo['id']]); ?>"  class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>取消预约</a>
 	                        </td>
 	                    </tr>
-	                    {/volist}
+	                    <?php endforeach; endif; else: echo "" ;endif; ?>
 	                </tbody>
 	            </table>
-	            <div>{$rents->render()}</div>
+	            <div><?php echo $rents->render(); ?></div>
 	        </div>
 		</div>
 		<div class="clear"></div>

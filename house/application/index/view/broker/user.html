@@ -394,31 +394,12 @@
             <!-- 形成安排 -->
             <div class="authentication ">
                 <h4>服务行程</h4>
+                {volist name="looks" id="vo"}
                 <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
+                    <p><span class="bold-1">[最新带看]</span>{$vo.update_time|time|date="Y-m-d",###}</p>
+                    <p>带看客户看房<a href="#">{:title($vo.house_id,$vo.house_type)}</a>等3套</p>
                 </div>
-                
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
-                <div class="authentication-look">
-                    <p><span class="bold-1">[最新带看]</span>2018-01-06</p>
-                    <p>带看客户看房<a href="#">北苑家园望春园 2室1厅 99.02平 540万 </a>等3套</p>
-                </div>
+                {/volist}
             </div>
       </div>
       <div class="clear"></div>

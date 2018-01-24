@@ -24,7 +24,6 @@
         text-align:center;
         }
     </style>
-
     
 </head>
 <body>
@@ -88,7 +87,9 @@
                                                      <td>{$vo.create_time|create_time}</td>
                                                     <td>{$vo.status|house_type}</td>
                                                     <td>
-                                                        <a href="{:url('share/look_status',['id'=>$vo.id,'status'=>4])}"  class="btn btn-danger btn-xs" onclick="" >点击接受委托</a>
+
+                                                        <a href="#" data-id="{$vo.id}"  class="btn btn-danger btn-xs receive" onclick="" >点击接受委托</a>
+
                                                     </td>
                                                 </tr>
                                                 {/volist}
@@ -121,6 +122,26 @@
        var SCOPE={
         'listorder':"{:url('second_house/listorder')}",
         }; 
+
+        
+        $(function () {
+
+            $(".receive").click(function () {
+                var id = $(this).attr('data-id');
+                var status=4;
+                var url="{:url('share/look_status')}";
+                $.post(url,{id:id,status:4},function(result){
+                    if(result==1){
+                        window.alert('已接受委托,可在个人信息查看,请尽快完成委托');
+                    }else if(result==2){
+                         window.alert('委托接收失败');
+                    }
+                     location.reload(); 
+
+                });
+
+            });
+        });
                
     </script>
 

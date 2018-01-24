@@ -45,7 +45,7 @@ class Look extends BaseModel{
 	 }
 
 	 //查看指定用户的预约带看信息
-	 public function getUserLook($user_id,$house_type,$status){
+	 public function getUserLook($user_id,$house_type,$status,$type=1){
 	 	if(empty($user_id) || empty($house_type)){
 	 		return false;
 	 	}
@@ -53,7 +53,7 @@ class Look extends BaseModel{
 
 	 	$data=[
 	 	'user_id'=>$user_id,
-	 	'house_type'=>$house_type,
+	 	'house_type'=>['in', $house_type],
 	 	'status'=>['in',$status],
 	 	];
 
@@ -61,8 +61,13 @@ class Look extends BaseModel{
 	 	'id'=>'desc'
 	 	];
 
+		 if($type==1){
+			$res = $this->where($data)->order($order)->paginate(10);
+		 }elseif($type==2){
+			$res = $this->where($data)->order($order)->select(6);
+		 }
 
-	 	$res=$this->where($data)->order($order)->paginate(10);
+	 	
 
 	 	if($res){
 	 		return $res;

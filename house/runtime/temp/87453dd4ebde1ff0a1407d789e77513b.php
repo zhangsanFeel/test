@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:82:"D:\phpStudy\WWW\test\house\public/../application/index\view\second_house\main.html";i:1516501308;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,20 +11,20 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
-<script type="text/javascript" src="__INDEX__/style/urlredirect.js"></script>
-<LINK href="__INDEX__/style/style.css" rel=stylesheet>
-<LINK href="__INDEX__/style/article.css" rel=stylesheet>
-<LINK href="__INDEX__/style/bootstrap.css" rel=stylesheet>
-<link rel="stylesheet" type="text/css" href="__INDEX__/css/magnifier.css">
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/jquery.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/functions.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/validForm/FormValid.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/jbox/jquery.jBox-2.3.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/search.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/menu.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/jQselect.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/slides.min.jquery.js"></script>
-<script language="JavaScript" type="text/javascript" src="__INDEX__/style/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="/test/house/public/static/index/style/urlredirect.js"></script>
+<LINK href="/test/house/public/static/index/style/style.css" rel=stylesheet>
+<LINK href="/test/house/public/static/index/style/article.css" rel=stylesheet>
+<LINK href="/test/house/public/static/index/style/bootstrap.css" rel=stylesheet>
+<link rel="stylesheet" type="text/css" href="/test/house/public/static/index/css/magnifier.css">
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/functions.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/validForm/FormValid.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jbox/jquery.jBox-2.3.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/search.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/menu.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jQselect.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/slides.min.jquery.js"></script>
+<script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jquery.touchSlider.js"></script>
 <script type="text/javascript">
 //                            _ooOoo_
 //                           o8888888o
@@ -59,14 +60,37 @@
 <!--[if IE 6]><script type="text/javascript" src="js/DD_belatedPNG.js"></script><![endif]-->
 </head>
 <body>
+
   
 
-  {include file="public:header"/}
+
+
+
+	<div class="nav">
+    	<ul>
+        	<li><a href="<?php echo url('index/index'); ?>" title="网站首页">网站首页</a></li>
+                         <li><a href="<?php echo url('second_house/index'); ?>" title="二手房">二手房</a></li>
+                        <li><a href="<?php echo url('rent_house/index'); ?>" title="租房">租房</a></li>
+                        <li><a href="<?php echo url('broker/index'); ?>" title="经纪人">经纪人</a></li>
+                        <li><a href="<?php echo url('house_entrust/index'); ?>" title="卖房委托">卖房委托</a></li>
+      </ul>   
+      <div class="login">
+          <?php if($user): ?>
+              欢迎您,<a href="<?php echo url('user/index'); ?>"><?php echo phone($user['phone']); ?></a>/ <a href="<?php echo url('login/logout'); ?>">退出</a>
+          <?php else: ?>
+           <a href="<?php echo url('login/index'); ?>">登陆</a> / <a href="<?php echo url('login/login'); ?>">注册</a>
+          <?php endif; ?>
+      </div>   
+    </div>
+    
+</div>
+<div class="clear"></div> 
 
 <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
 <script type="text/javascript">
     $(function() {
-        $('.collect').mouseover(function(){
+
+         $('.collect').mouseover(function(){
             var text=$(this).text('取消收藏');
         })
          $('.collect').mouseout(function(){
@@ -82,9 +106,9 @@
 <div class="page-header">
 <div class="main">
     <div class="main-nav">
-        <div><img src="images/logo.png" alt="" /></div>
-        <div class="main-input"><input type="text" name="" placeholder="请输入区域,小区名开始找房" id="" /><button type="submit">&nbsp;</button></div>
-        
+        <div><img src="/test/house/public/static/index/images/logo.png" alt="" /></div>
+        <div class="main-input"><input type="text" name="" placeholder="  请输入区域,小区名开始找房" id="" /><button type="submit">&nbsp;</button></div>
+      
     </div>
 
 </div>
@@ -93,28 +117,27 @@
 <!-- 搜索框 -->
         <!-- 导航栏 -->
  <div class="article-shupiao">
-    {$rent.estate_id|estate=###,3} 
+    <?php echo estate($second['estate_id'],2); ?> 
   </div>
   <div class="article-content">
 
   <div class="article-info">
-
-        <h1>{$rent.title}</h1>
+        <h1><?php echo $second['title']; ?></h1>
 
         <div class="article-style">
-          {if condition="$collect"}
-            <a href="{:url('index/collect',['id'=>$rent.id,'type'=>2])}" class="article-collect collect">已收藏</a>
-          {else/}
-            <a href="{:url('index/collect',['id'=>$rent.id,'type'=>2])}" class="article-collect">收藏房源</a>
-          {/if}
-          {if condition="$look"}
-               <a href="{:url('user/subscribe')}" class="article-subscribe">已预约带看</a>
-          {else/}
-             <a href="{:url('index/subscribe',['id'=>$rent.id,'type'=>2])}" class="article-subscribe">预约带看</a>
-          {/if}
+          <?php if($collect): ?>
+            <a href="<?php echo url('index/collect',['id'=>$second['id'],'type'=>1]); ?>" class="article-collect collect">已收藏</a>
+          <?php else: ?>
+            <a href="<?php echo url('index/collect',['id'=>$second['id'],'type'=>1]); ?>" class="article-collect">收藏房源</a>
+          <?php endif; if($look): ?>
+               <a href="<?php echo url('index/subscribe',['id'=>$second['id'],'type'=>1]); ?>" class="article-subscribe">已预约带看</a>
+          <?php else: ?>
+             <a href="<?php echo url('index/subscribe',['id'=>$second['id'],'type'=>1]); ?>" class="article-subscribe">预约带看</a>
+          <?php endif; ?>
          
         </div>
-        
+
+
 
       <div class="article-left">
                        
@@ -135,13 +158,13 @@
                           <!--按钮组-->
                           <div class="magnifier-line">
                             <ul class="clearfix animation03">
-                               {volist name="images" id="vo"}
+                              <?php if(is_array($images) || $images instanceof \think\Collection || $images instanceof \think\Paginator): $i = 0; $__LIST__ = $images;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                               <li>
                                 <div class="small-img">
-                                  <img src="__IMG__/{$vo.path}" />
+                                  <img src="/test/house/public/uploads/<?php echo $vo['path']; ?>" />
                                 </div>
                               </li>
-                              {/volist}
+                              <?php endforeach; endif; else: echo "" ;endif; ?>
                             </ul>
                           </div>
                           <!--缩略图-->
@@ -155,53 +178,60 @@
 
                 </div>
                 <div class="article-right">
-                  <div class="article-price"><span>{$rent.price}</span>元/月&nbsp;&nbsp;&nbsp;&nbsp;{$rent.payment_type|payment_type} </div>
+                  <div class="article-price"><span><?php echo floatval($second['price']); ?></span>万&nbsp;&nbsp;&nbsp;&nbsp;<?php echo price($second['price'],$second['proportion']); ?> 元/平 </div>
                   <ul>
                       <li>
                         <span class="article-key">面积:</span>
-                        <span class="article-value">{$rent.proportion|floatval}平米</span>
+                        <span class="article-value"><?php echo floatval($second['proportion']); ?>平米</span>
                       </li>
                        <li>
                         <span class="article-key">房屋户型:</span>
-                        <span class="article-value">{$rent.room}室{$rent.hall}厅{$rent.toilet}卫  {$rent.rent_type|rent_type}  {$rent.setSax|setSax=###,$rent.rent_type}</span>
+                        <span class="article-value"><?php echo $second['room']; ?>室<?php echo $second['hall']; ?>厅<?php echo $second['toilet']; ?>卫</span>
                       </li>
                        <li>
                         <span class="article-key">楼层:</span>
-                        <span class="article-value">{$rent.floor|floors=###,$rent.all_floor}</span>
+                        <span class="article-value"><?php echo floors($second['floor'],$second['all_floor']); ?></span>
                       </li>
                        <li>
                         <span class="article-key">朝向:</span>
-                        <span class="article-value">{$rent.orientation|orientation}</span>
+                        <span class="article-value"><?php echo orientation($second['orientation']); ?></span>
+                      </li>
+                      <li>
+                        <span class="article-key">装修情况:</span>
+                        <span class="article-value"><?php echo decorate($second['decorate']); ?></span>
+                      </li>
+                       <li>
+                        <span class="article-key">房屋类型:</span>
+                        <span class="article-value"><?php echo purpose($second['purpose']); ?></span>
                       </li>
                   </ul>
                 <div class="clear"></div>
                   <div class="article-address">
-                      <span class="article-key">位置:</span>
-                      <span class="article-value">{$rent.estate_id|estate}</span>
+                      <span class="article-key">小区:</span>
+                      <span class="article-value"><?php echo estate($second['estate_id']); ?></span>
                   </div>
                   <div class="article-time">
                       <span class="article-key">发布时间:</span>
-                      <span class="article-value">{$rent.create_time|create_time}</span>
+                      <span class="article-value"><?php echo create_time($second['create_time']); ?></span>
                   </div>
                   <hr />
-
                   <div class="user-info">
-                      <a href="{:url('broker/user',['id'=>$broker.id])}" class="user-img">
-                          <img src="__IMG__/{$broker.broker_img}" alt="" />
+                      <a href="<?php echo url('broker/user',['id'=>$broker['id']]); ?>" class="user-img">
+                          <img src="/test/house/public/uploads/<?php echo $broker['broker_img']; ?>" alt="" />
                       </a>
                       <div class="user-text">
-                          <p><a href="{:url('broker/user',['id'=>$broker.id])}" class="user-name">{$broker.username}</a><span class="user-identity">经纪人</span></p>
+                          <p><a href="<?php echo url('broker/user',['id'=>$broker['id']]); ?>" class="user-name"><?php echo $broker['username']; ?></a><span class="user-identity">经纪人</span></p>
                           <p><span class="user-grade">评分:5.0/4人评分</span> <span class="user-look">本房带看:5次</span></p>
-                          <p class="user-tel">电话咨询:{$broker.phone}</p>
+                          <p class="user-tel">电话:<?php echo $broker['phone']; ?></p>
                       </div>
                       <div class="clear"></div>
                   </div>
-
                 </div>
 
                 <div class="clear"></div>
 
   </div>
+
       <div class="article-basicinfo">
           <h1>基本信息</h1>
           <div class="article-basic">
@@ -212,39 +242,39 @@
                   <ul>
                       <li>
                           <span class="article-key">房屋户型</span>
-                          <span class="article-value">{$rent.room}室{$rent.hall}厅{$rent.toilet}卫 </span>
+                          <span class="article-value"><?php echo $second['room']; ?>室<?php echo $second['hall']; ?>厅<?php echo $second['toilet']; ?>卫</span>
                       </li>
                        <li>
                           <span class="article-key">所在楼层</span>
-                          <span class="article-value">{$rent.floor|floors=###,$rent.all_floor}</span>
+                          <span class="article-value"><?php echo floors($second['floor'],$second['all_floor']); ?></span>
                       </li>
                        <li>
                           <span class="article-key">建筑面积</span>
-                          <span class="article-value">{$rent.proportion|floatval}㎡</span>
+                          <span class="article-value"><?php echo floatval($second['proportion']); ?>㎡</span>
                       </li>
                        <li>
                           <span class="article-key">房屋朝向</span>
-                          <span class="article-value">{$rent.orientation|orientation}</span>
+                          <span class="article-value"><?php echo orientation($second['orientation']); ?></span>
                       </li>
                        <li>
                           <span class="article-key">装修情况</span>
-                          <span class="article-value">{$rent.decorate|decorate}</span>
+                          <span class="article-value"><?php echo decorate($second['decorate']); ?></span>
                       </li>
                       <li>
-                          <span class="article-key">租房方式</span>
-                          <span class="article-value">{$rent.rent_type|rent_type}</span>
+                          <span class="article-key">配套设备</span>
+                          <span class="article-value"><?php echo lifts($second['lift']); ?></span>
                       </li>
                       <li>
-                          <span class="article-key">付款方式</span>
-                          <span class="article-value">{$rent.payment_type|payment_type}</span>
+                          <span class="article-key">产权年限</span>
+                          <span class="article-value"><?php echo prop_age($second['prop_age']); ?></span>
                       </li>
                       <li>
                           <span class="article-key">房屋类型</span>
-                          <span class="article-value">{$rent.purpose|purpose}</span>
+                          <span class="article-value"><?php echo purpose($second['purpose']); ?></span>
                       </li>
                       <li>
-                          <span class="article-key">房屋现状</span>
-                          <span class="article-value">{$rent.actuality|actuality}</span>
+                          <span class="article-key">房屋年限</span>
+                          <span class="article-value"><?php echo certificate($second['certificate']); ?></span>
                       </li>
                   </ul>
                   <div class="clear"></div>
@@ -252,35 +282,36 @@
               <div class="clear"></div>
           </div>
       </div>
+
+
       <div class="article-feature">
           <h1>房源特色</h1>
           <div class="article-basic">
               <div class="article-content">
-
-                  <ul class="zufangpeitao">
-                       
-                        {$rent.lift|equipment}
-                  </ul>
                   <ul>
                       <li>
+                          <span class="article-trait">房源标签</span>
+                          <span class="article-to"><span class="tag-blue">地铁</span><span class="tag-fense">房源满5年</span></span>
+                      </li>
+                      <li>
                           <span class="article-trait">核心卖点</span>
-                          <span class="article-to">{$rent.lightspot}</span>
+                          <span class="article-to"><?php echo $second['selling_points']; ?></span>
                       </li>
                        <li>
                           <span class="article-trait">户型介绍</span>
-                          <span class="article-to">{$rent.house_type}</span>
+                          <span class="article-to"><?php echo $second['house_type']; ?></span>
                       </li>
                        <li>
-                          <span class="article-trait">装修描述</span>
-                          <span class="article-to">{$rent.decorate_desc}}</span>
-                      </li>     
-                      <li>
-                          <span class="article-trait">周边配套</span>
-                          <span class="article-to">{$rent.mating}</span>
+                          <span class="article-trait">业主心态</span>
+                          <span class="article-to">安贞南北通透、全明两居中间楼层，满五年唯一</span>
                       </li>
                       <li>
                           <span class="article-trait">小区介绍</span>
-                          <span class="article-to">{$rent.estate_desc}</span>
+                          <span class="article-to"><?php echo $second['estate_desc']; ?></span>
+                      </li>
+                      <li>
+                          <span class="article-trait">周边配套</span>
+                          <span class="article-to">安贞南北通透、全明两啊居中间楼层，满五年唯一</span>
                       </li>
                   </ul>
                   <div class="clear"></div>
@@ -294,10 +325,12 @@
           <div class="article-basic">
               <div class="article-content">
                   <ul>
-                   {volist name="images" id="vo" empty="暂无图片"}
-                              <li><img src="__IMG__/{$vo.path}" alt="" /></li>
-                              {/volist}
-                     
+                      <?php if(is_array($images) || $images instanceof \think\Collection || $images instanceof \think\Paginator): $i = 0; $__LIST__ = $images;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                              <li>
+                                  <img src="/test/house/public/uploads/<?php echo $vo['path']; ?>" />
+                              </li>
+                       <?php endforeach; endif; else: echo "" ;endif; ?>
+
                   </ul>
                   <div class="clear"></div>
               </div>
@@ -312,7 +345,7 @@
                   <ul>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -324,7 +357,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -336,7 +369,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -348,7 +381,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -360,7 +393,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -372,7 +405,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -384,7 +417,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -396,7 +429,7 @@
                       </li>
                       <li>
                             <a href="#">
-                            <img src="__INDEX__/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
+                            <img src="/test/house/public/static/index/images/5ef07e88-1a8d-4d27-81df-58dbce807ff0.jpg.280x210.jpg.232x174.jpg" alt="" />
                             <div class="sidebar-user">
                                 <span class="sidebar-price">350万---3500元/㎡</span>       
                             </div>
@@ -473,7 +506,8 @@
 </div>
 </div>
 
-<script type="text/javascript" src="__INDEX__/js/magnifier.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="/test/house/public/static/index/js/magnifier.js"></script>
 <script type="text/javascript">
 $(function() {
   

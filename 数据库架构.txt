@@ -392,7 +392,10 @@ id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex
 
 
 
+带看成交数据统计表
 
+id。小区名称，所属商圈，所属区域，类型(1.成交，2带看) ,房源类型(租房，二手房)，数量。
+创建时间，更新时间，状态
 
 
 

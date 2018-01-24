@@ -22,7 +22,10 @@ class Broker extends Base
         $getLookCount = model('look')->getLookGradeCount($id);
         //发布人信息
         $broker=model('broker')->get($id);
+        //查询带看的 经纪人，租房二手房，带看完成的数据
+        $looks=model('look')->getUserLook($id,'1,2','1');
 
+        $this->assign('looks',$looks);
         $this->assign('yeasDay', $yeasDay);
         $this->assign('id', $id);
         $this->assign('getLookCount', $getLookCount);
