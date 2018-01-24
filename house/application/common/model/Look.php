@@ -110,4 +110,23 @@ class Look extends BaseModel{
 			
 	 }
 
+	 //统计带看完成后，该经纪人评分的数据
+	 public function getLookGradeCount($id){
+		if (empty($id)) {
+			return false;
+		}
+		 $data=[
+			'broker_id'=>$id,
+			'status'=>1,
+		 ];
+		$arr=[];
+		 for($i=1;$i<6;$i++){
+			$data['grade']=$i;
+			$count=$this->where($data)->count();
+			$arr[$i]=intval($count);
+		 }
+		$arr['count']=array_sum($arr);
+		return $arr;
+	 }
+
 }

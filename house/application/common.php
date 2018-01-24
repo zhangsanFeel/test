@@ -850,3 +850,17 @@ function title_substr($title,$len=20){
 	}
 	
 }
+
+
+//评分所占的查询百分比
+
+function gradeCount($gradeCount,$grade){
+	
+	if(empty($gradeCount) || empty($grade)){
+		return false;
+	}
+	//列如  5/50 =0.1 
+	$baifenbi=round($gradeCount[$grade] / $gradeCount['count'],2);
+	// 0.1*100%  = 百分之10 
+	return $baifenbi * 100;
+}

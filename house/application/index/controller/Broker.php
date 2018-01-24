@@ -19,13 +19,13 @@ class Broker extends Base
        
         $yeasDay=model('look')->getYearLookCount($id);
 
-
+        $getLookCount = model('look')->getLookGradeCount($id);
         //发布人信息
         $broker=model('broker')->get($id);
 
-
         $this->assign('yeasDay', $yeasDay);
-        $this->assign('id',$id);
+        $this->assign('id', $id);
+        $this->assign('getLookCount', $getLookCount);
         $this->assign('broker',$broker);
     	return view();
     }

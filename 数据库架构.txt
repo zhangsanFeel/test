@@ -387,7 +387,7 @@ id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex
 完善带看系统，成交系统
 
 
-
+//经纪人，用户，房源，状态
 
 
 

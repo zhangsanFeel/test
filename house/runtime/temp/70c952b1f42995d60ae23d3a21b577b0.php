@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"D:\phpStudy\WWW\test\house\public/../application/index\view\broker\user.html";i:1516328236;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\broker.html";i:1516760263;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:76:"D:\phpStudy\WWW\test\house\public/../application/index\view\broker\user.html";i:1516761979;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\broker.html";i:1516760263;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -141,11 +141,11 @@
                                 <span class="full-star"></span>
                                 <span class="jindutiao"></span>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 90%;">
-                                    <div class="progress-value">90%</div>
+                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,5); ?>%;">
+                                    <div class="progress-value"><?php echo gradeCount($getLookCount,5); ?>%</div>
                                   </div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                                <span class="renshu">(<?php echo $getLookCount[5]; ?>)</span>
                             </li>
                             <li>
                                 <span class="full-star"></span>
@@ -203,8 +203,6 @@
                                 </div>
                                 <span class="renshu">(113)</span>
                             </li>
-
-                              <li>用户评分是带看完或者购房后,打电话咨询得出的评价,所以没有文字</li>
 
                         </ul>
 
@@ -219,11 +217,11 @@
                                 <span class="full-star"></span>
                                 <span class="jindutiao"></span>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 30%;">
-                                    <div class="progress-value">30%</div>
-                                  </div>
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,5); ?>%;">
+                                        <div class="progress-value"><?php echo gradeCount($getLookCount,5); ?>%</div>
+                                    </div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                                <span class="renshu">(<?php echo $getLookCount[5]; ?>)</span>
                             </li>
                             <li>
                                 <span class="full-star"></span>
@@ -232,12 +230,12 @@
                                 <span class="full-star"></span>
                                 <span class="star"></span>
                                 <span class="jindutiao"></span>
-                                <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20%;">
-                                    <div class="progress-value">20%</div>
-                                  </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,4); ?>%;">
+                                    <div class="progress-value"><?php echo gradeCount($getLookCount,4); ?>%</div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                            </div>
+                            <span class="renshu">(<?php echo $getLookCount[4]; ?>)</span>
                             </li>
                             <li>
                                 <span class="full-star"></span>
@@ -247,11 +245,11 @@
                                 <span class="star"></span>
                                 <span class="jindutiao"></span>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 50%;">
-                                    <div class="progress-value">50%</div>
-                                  </div>
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,3); ?>%;">
+                                        <div class="progress-value"><?php echo gradeCount($getLookCount,3); ?>%</div>
+                                    </div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                                <span class="renshu">(<?php echo $getLookCount[3]; ?>)</span>
                             </li>
                             <li>
                                 <span class="full-star"></span>
@@ -261,11 +259,11 @@
                                 <span class="star"></span>
                                 <span class="jindutiao"></span>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20%;">
-                                    <div class="progress-value">20%</div>
-                                  </div>
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,2); ?>%;">
+                                        <div class="progress-value"><?php echo gradeCount($getLookCount,2); ?>%</div>
+                                    </div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                                <span class="renshu">(<?php echo $getLookCount[2]; ?>)</span>
                             </li>
                              <li>
                                 <span class="star"></span>
@@ -275,16 +273,15 @@
                                 <span class="star"></span>
                                 <span class="jindutiao"></span>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 90%;">
-                                    <div class="progress-value">90%</div>
-                                  </div>
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:<?php echo gradeCount($getLookCount,1); ?>%;">
+                                        <div class="progress-value"><?php echo gradeCount($getLookCount,1); ?>%</div>
+                                    </div>
                                 </div>
-                                <span class="renshu">(113)</span>
+                                <span class="renshu">(<?php echo $getLookCount[1]; ?>)</span>
                             </li>
-
-                              <li>用户评分是带看完或者购房后,打电话咨询得出的评价,所以没有文字</li>
-
                         </ul>
+
+
 
 
                     </div>
