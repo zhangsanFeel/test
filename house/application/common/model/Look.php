@@ -93,14 +93,21 @@ class Look extends BaseModel{
 	 }
 
 	 //获得数量
-	 public function getYearLookCount(){
+	 public function getYearLookCount($id){
+		 	if(empty($id)){
+				 return false;
+			 }
 	 		 $yearDay=60*60*24*30;
 	 		 $data=time()-$yearDay;
-
-	 		 echo $data;
 	 		 $data=[
-	 		  'update_time'=>['>',$yearDay],
-	 		 ];
+			   'update_time'=>['>',$yearDay],
+			   'status'=>1,
+			   'broker_id'=>$id,
+			  ];
+			//
+			$res=$this->where($data)->count();
+			return intval($res);
+			
 	 }
 
 }

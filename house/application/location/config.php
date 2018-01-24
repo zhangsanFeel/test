@@ -29,7 +29,7 @@ return [
     ],
 
     'view_replace_str'  =>  [
-    '__ADMIN__' => '/test/public/static/admin',
+    '__ADMIN__' => '/test/house/public/static/admin',
     
 
     ],

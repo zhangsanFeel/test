@@ -14,9 +14,9 @@ return [
     // +----------------------------------------------------------------------
 
     'view_replace_str'  =>  [
-    '__INDEX__' => '/test/public/static/index',
-    '__IMG__' => '/test/public/uploads',
-    '__ADMIN__' => '/test/public/static/admin',
+    '__INDEX__' => '/test/house/public/static/index',
+    '__IMG__' => '/test/house/public/uploads',
+    '__ADMIN__' => '/test/house/public/static/admin',
 
     ],
 

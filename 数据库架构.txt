@@ -1,0 +1,420 @@
+﻿
+
+房0539数据库设计架构
+
+
+主要功能逻辑为
+看图
+
+
+
+主要视图
+
+
+
+1.首页
+
+2.分类页
+
+
+3.详情页
+
+4.买房提交页面
+
+
+5.搜索页面
+
+
+6.二手房页
+
+7.新房页面
+
+
+8.租房页面
+
+
+
+数据库结构
+
+
+
+
+
+
+
+经纪人表----  broker
+
+主键---id
+姓名--username
+密码---password
+加密--code
+邮箱--email
+联系电话--phone
+职位--position
+入职时间--entry_time
+主营板块--city_id  (多)
+重点小区--estate_id(多)
+所属店铺----location_id
+标签--label_id  （多，）
+listorder
+update_time
+create_time
+status （1为正常，2为不启用，-1为删除）
+
+
+
+所属门店--location
+主键---id
+门店名称--name
+门店地址--address
+门店所属地址--city_id
+门店地址路径 --city_path
+店长---broker_name
+店长---broker_username
+店长---broker_password
+店长---broker_tel
+门店电话--location_tel
+code----加密 4位数
+listorder
+update_time
+create_time
+status （1为正常，2为不启用，-1为删除）
+
+
+
+
+带看表 ---- band_look
+主键 --id
+小区名称--name
+所属区域--city_id
+经纪人id --broker_id
+房屋类型--classify  （1.为二手房，2新房，3为租房）;
+类型---genre   (1.为带看， 2为成交)
+listorder
+update_time
+create_time
+status （1为正常，2为不启用，-1为删除）
+
+
+
+
+
+
+标签分类表  label_type
+主键 --id
+标签名称 --name
+标签分类 --type_id
+listorder
+update_time
+create_time
+status
+
+标签表  label
+主键 --id
+标签名称 --name
+标签类型 --type
+listorder
+update_time
+create_time
+status
+
+
+
+网站的logo
+
+网站关键词设置
+
+
+
+
+
+
+
+
+
+
+客户评价
+
+1-100分 你能打几分
+
+1.带看
+
+
+
+2.买房
+
+
+
+
+客户评价表 ---evaluate
+主键 --id
+关联表 --broker_id
+分类--classify    (1.为买房，2为带看)
+评分--grade    (1-100分)
+listorder
+update_time
+create_time
+status
+
+
+地区表---city
+
+主键---id
+地区名称--name
+父类--pid
+listorder
+update_time
+create_time
+status
+
+
+
+
+小区表 estate
+主键--id
+小区名称--name
+所属地区--city_id
+地区路径 --city_path
+listorder
+update_time
+create_time
+status
+
+
+
+
+
+
+
+
+
+
+二手房信息，城市，小区，经纪人  second_house
+
+主键---id
+标题--title
+小区id--  estate_id
+价格--  price
+面积--   proportion
+室---  room
+厅---   hall
+卫---   toilet
+所在楼层--  floor
+总楼层--   all_floor
+朝向--    orientation
+装修情况--  decorate
+建成时间--  activate_time
+看房时间--	see_house
+链家编号--  number
+经纪人--   broker_id
+经纪人--   broker_name
+配备电梯 --  lift
+产权年限 --   prop_age
+产权年限 --   prop_type
+房屋年限 --   certificate            (满五年)
+房屋类型--   purpose（普通住房）
+房源标签 --   label  （1对多）
+核心卖点 --   selling_points
+户型介绍 --	  house_type
+小区介绍 --	  estate_desc
+listorder
+update_time
+create_time
+status
+
+
+
+
+
+
+新房  new_house
+主键--id
+
+朝向--  orientation
+室---  room
+厅---   hall
+卫---   toilet
+
+面积--   proportion
+参考价格-- price
+户型详解-- house_type
+listorder
+update_time
+create_time
+status  
+特点标签 --  label_id（1对多）
+
+
+
+
+租房  rent_house
+
+主键--id
+标题-----title
+租房方式 --   rent_type
+付款方式 --   payment_type
+房屋现状 --   actuality
+房源亮点 --   lightspot
+户型介绍 --   house_type 
+经纪人--   broker_id
+经纪人--   broker_name
+装修描述 --   decorate_desc 
+周边配套 --   mating  
+小区介绍 --   estate_desc
+面积 --    proportion
+室---  room
+厅---   hall
+卫---   toilet
+所在楼层--  floor
+总楼层--   all_floor
+朝向--  orientation
+小区主键 -- estate_id
+listorder
+update_time
+create_time
+status
+配套---left
+男女不限--setSax
+出租房介绍--property
+装修情况--decorate
+房屋类型--purpose
+参考价格-- price
+
+
+
+修改
+
+
+
+删除
+
+房源特色 --   feature
+
+
+
+
+
+
+图片表  img
+
+主键 --id
+路径 --path
+类型 --classify(1,是二手房， 2是租房)
+listorder
+update_time
+create_time
+status
+
+
+
+
+
+管理员表 admin
+
+username
+
+password
+
+
+
+用户表  user
+
+
+id
+name
+username
+password
+phone
+img
+
+
+
+
+
+
+
+
+
+
+
+1.经纪人添加数据少一个 店铺_id 关联的id
+
+2.标签可以删除几个...
+
+
+
+
+
+
+
+
+收藏表
+
+id
+收藏者
+收藏类型 1是二手房，2是租房 3是新房
+收藏的id
+收藏时间
+
+
+
+
+带看预约表
+
+
+带看表
+1.id
+2.需要带看者的电话
+3.状态，0未被拾取 1.已被拾取
+4.带看者名字
+5.被谁拾取成功了~
+6.经营状态, 带看成功，但是未评论
+7.带看评分--，只有评分以后才有带看成功
+8.type的 分类
+9.id 房源的id
+10.评分
+11.评价
+12.性别
+
+id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex
+
+
+状态
+
+1.为带看玩并且评分， 2.为带看玩，但是用户未评分，不属于带看完成  3.在未被拾取区里
+
+
+完善带看系统，成交系统
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.经纪人添加自述功能
+
+2.把整个的路径填充上， 比如 山东省-兰山区-枣沟头真-陶家庄村，少一个路径
+
+3.门店加一个门店图片
+
+
+
+
+
+
+
+今天晚上做版本控制
+
+
+

@@ -17,18 +17,14 @@ class Broker extends Base
         //近30天带看数量
 
        
-        $yeasDay=model('look')->getYearLookCount();
-
-
-
-
+        $yeasDay=model('look')->getYearLookCount($id);
 
 
         //发布人信息
         $broker=model('broker')->get($id);
 
 
-
+        $this->assign('yeasDay', $yeasDay);
         $this->assign('id',$id);
         $this->assign('broker',$broker);
     	return view();
