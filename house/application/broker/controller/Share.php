@@ -11,42 +11,49 @@ class Share extends Base{
 		return view();
 	}
 
-	//带看系统
-	public function look_status(){
+
+
+	public function look_add(){
 
 		$data=input('post.');
+		if(empty($data['id'])){
+			$this->error('404找不到页面');
+		}
+		//4为正在带看中，，，
+		$look=model('look')->where(['status'=>4,"id"=>$data['id']])->find();
+		if(empty($look)){
+			$this->error('数据不合法');
+		}
+
+		
+		dump($look);
+
+		dump($data);
+	}
+	
+	//带看系统
+	public function look_status($border_id, $id, $status)
+	{
 		//拼装数组
 		$lookData = [
-			'status' =>$data['status'],
-			'broker_id' => $this->getLogins()['id'],
-			'id' => $data['id'],
+			'status' => $status,
+			'broker_id' => $border_id,
+			'id' => $id,
 			'update_time' => time(),
-		];
-		
-		//接受带看,但是还未带看完成
-		
-
-		
-		try{
-    		$res=model('look')->save($lookData,['id'=>$data['id']]);
-    	}catch(\Exception $e){
-			echo 2;
-			return;
-    	}
-
-		if($res){
-			echo 1;
-			return;
-		}else{
-			echo 2;
-			return;
+		];	
+		//接受带看,但是还未带看完成	
+		try {
+			$res = model('look')->save($lookData, ['id' => $data['id']]);
+		} catch (\Exception $e) {
+			return false;
 		}
-		
+
+		if ($res) {
+			return $res;
+		} else {
+			return false;
+		}
 	}
-
-
-
-
 	
 
 

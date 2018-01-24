@@ -92,13 +92,15 @@
                                                      <td>{$vo.create_time|create_time}</td>
                                                     <td>{$vo.status|house_type}</td>
                                                     <td>
+                                                        <form action="{:url('share/look_add')}" method="post">
                                                         <a href="{:url('user/collect',['id'=>$vo.user_id])}" class="btn btn-info btn-xs" onclick="">客户</a>
                                                         {if condition="$vo.status eq 4"}
-                                                           <a href="{:url('share/look_status',['id'=>$vo.id,'status'=>2])}"  class="btn btn-warning btn-xs" onclick="" >完成带看</a>
+                                                            <input type="hidden" name="id" value="{$vo.id}">
+                                                            <button type="submit" class="btn btn-warning btn-xs">完成带看</button>
                                                            {else/}
                                                             <a href="#"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
                                                         {/if}
-                                                        
+                                                        </form>
                                                         
 
 

@@ -23,10 +23,7 @@ class Index extends Base{
 			if(!$validate->check($data)){
 				$this->error($validate->getError());
 			}
-
 			//更新数据库
-			
-
 			$adminData['username']=$data['username'];
 			
 			

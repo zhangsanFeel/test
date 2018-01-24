@@ -1,33 +1,40 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\test\house\public/../application/broker\view\user\appoint_user_lst.htm";i:1516775909;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/broker\view\share\look_add.htm";i:1516776053;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
 <!DOCTYPE html>
-<html><head>
-        <meta charset="utf-8">
+<html>
+
+<head>
+    <meta charset="utf-8">
     <title>0539房产信息管理系统</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/test/house/public/static/admin/assets/css/bootstrap.min.css">
+    <!-- 
+   <link rel="stylesheet" type="text/css" href="/test/house/public/static/admin/bootstrap/css/default.css"> -->
+    <link rel="stylesheet" type="text/css" href="/test/house/public/static/admin/bootstrap/css/fileinput.min.css">
+    <link href="/test/house/public/static/admin/bootstrap/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
     <!--Basic Styles-->
+    <script type="text/javascript" src="/test/house/public/static/admin/library/jqury/jquery-3.1.1.js"></script>
     <link href="/test/house/public/static/admin/style/bootstrap.css" rel="stylesheet">
     <link href="/test/house/public/static/admin/style/font-awesome.css" rel="stylesheet">
     <link href="/test/house/public/static/admin/style/weather-icons.css" rel="stylesheet">
-    
-     <!--Page Related styles-->
-    <link href="/test/house/public/static/admin/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!--Beyond styles-->
     <link id="beyond-link" href="/test/house/public/static/admin/style/beyond.css" rel="stylesheet" type="text/css">
     <link href="/test/house/public/static/admin/style/demo.css" rel="stylesheet">
     <link href="/test/house/public/static/admin/style/typicons.css" rel="stylesheet">
     <link href="/test/house/public/static/admin/style/animate.css" rel="stylesheet">
-    <style>
-        table,thead th{
-        text-align:center;
-        }
-    </style>
+    <!-- select选择框 -->
+    <link media="all" href="/test/house/public/static/admin/public/js/jquery.searchableSelect.css" type="text/css" rel="stylesheet">
+    <!--Basic Scripts-->
+    <script src="/test/house/public/static/admin/style/jquery_002.js"></script>
+    <script src="/test/house/public/static/admin/style/bootstrap.js"></script>
+    <script src="/test/house/public/static/admin/style/jquery.js"></script>
 
-    
 </head>
+
 <body>
     	<!-- 头部 -->
 	<div class="navbar">
@@ -266,116 +273,153 @@
             </div>
             <!-- /Page Sidebar -->
             <!-- Page Content -->
-            <!-- /Page Sidebar -->
-            <!-- Page Content -->
-            <div class="page-content">
-                <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                                        <li>
-                        <a href="<?php echo url('index/index'); ?>">返回首页</a>
-                    </li>
-                                        <li class="active">预约带看列表</li>
-                                        </ul>
-                </div>
-                <!-- /Page Breadcrumb -->
+    <!-- /Page Sidebar -->
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">系统</a>
+                </li>
+                <li>
+                    <a href="<?php echo url('rent_house/lst'); ?>">租房信息表</a>
+                </li>
+                <li class="active">新增租房信息</li>
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
 
-                <!-- Page Body -->
+        <!-- Page Body -->
+        <div class="page-body">
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <div class="widget">
-                                <div class="widget-header  with-footer">
-                                    <span class="widget-caption">预约带看列表</span>
-                                    <div class="widget-buttons">
-                                        <a href="#" data-toggle="maximize">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                        <a href="#" data-toggle="collapse">
-                                            <i class="fa fa-minus"></i>
-                                        </a>
-                                        <a href="#" data-toggle="dispose">
-                                            <i class="fa fa-times"></i>
-                                        </a>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-blue">
+                            <span class="widget-caption">新增租房信息</span>
+                        </div>
+                        <div class="widget-body">
+                            <div id="horizontal-form">
+                                <form class="form-horizontal" role="form" action="<?php echo url('rent_house/save'); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-label no-padding-right">标题</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" id="title" placeholder="" name="title" required="" type="text">
+                                        </div>
+                                        <p class="help-block col-sm-4 red">* 必填</p>
                                     </div>
-                                </div>
-                                <div class="widget-body">
-                                    <div class="flip-scroll">
-                                        <table class="table table-bordered table-striped table-condensed flip-content">
-                                            <thead class="flip-content bordered-palegreen">
-                                                <tr role="row">
-                                                    <th>id</th>
-                                                    <th>类型</th>
-                                                    <th>预约房源</th>
-                                                    <th>描述</th>
-                                                    <th>预留姓名</th>
-                                                    <th>称呼</th>
-                                                    <th>用户电话</th>
-                                                    <th>创建时间</th>
-                                                    <th>状态</th>
-                                                    <th>操作</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php if(is_array($look) || $look instanceof \think\Collection || $look instanceof \think\Paginator): $i = 0; $__LIST__ = $look;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                                                <tr>
-                                                    <td><?php echo $vo['id']; ?></td>
-                                                    <td><?php echo type_name($vo['house_type']); ?></td>
-                                                    <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-                                                    <td><?php echo $vo['desc']; ?></td>
-                                                    <td><?php echo $vo['name']; ?></td>
-                                                    <td><?php echo sex($vo['sex']); ?></td>
-                                                    <td><?php echo $vo['phone']; ?></td>
-                                                     <td><?php echo create_time($vo['create_time']); ?></td>
-                                                    <td><?php echo house_type($vo['status']); ?></td>
-                                                    <td>
-                                                        <form action="<?php echo url('share/look_add'); ?>" method="post">
-                                                        <a href="<?php echo url('user/collect',['id'=>$vo['user_id']]); ?>" class="btn btn-info btn-xs" onclick="">客户</a>
-                                                        <?php if($vo['status'] == 4): ?>
-                                                            <input type="hidden" name="id" value="<?php echo $vo['id']; ?>">
-                                                            <button type="submit" class="btn btn-warning btn-xs">完成带看</button>
-                                                           <?php else: ?>
-                                                            <a href="#"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
-                                                        <?php endif; ?>
-                                                        </form>
-                                                        
 
 
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <?php endforeach; endif; else: echo "" ;endif; ?>
-                                            </tbody>
-                                        </table>
-                                        <div><?php echo $look->render(); ?></div>
+                                    <div class="form-group">
+                                        <label for="room" class="col-sm-2 control-label no-padding-right">房屋户型</label>
+                                        <div class="col-sm-2 form-inline">
+                                            <input type="number" name="room" id="room" class="form-control" required maxlength="1" style="width:70%"> 室
+                                        </div>
+                                        <div class="col-sm-2 form-inline">
+                                            <input type="number" name="hall" id="hall" class="form-control" required maxlength="1" style="width:70%"> 厅
+                                        </div>
+                                        <div class="col-sm-2 form-inline">
+                                            <input type="number" name="toilet" id="toilet" class="form-control" required maxlength="1" style="width:70%"> 卫
+                                        </div>
+                                        <p class="help-block col-sm-4  red"></p>
                                     </div>
-                                </div>
+
+
+                                    <div class="form-group">
+                                        <label for="carseat" class="col-sm-2 control-label no-padding-right">标签</label>
+                                        <div class="col-sm-6 form-inline">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price" class="col-sm-2 control-label no-padding-right">总价格</label>
+                                        <div class="col-sm-2 form-inline">
+                                            <input class="form-control" id="price" onblur="onmouseupget()" placeholder="" style="width:40%" name="price" required=""
+                                                type="text">
+                                            <span style="padding-left:10px;font-size:16px;color:red">元/月</span>
+                                        </div>
+                                        <div class="col-sm-4 form-inline">
+                                            <select name="payment_type" id="" class="form-control" required>
+                                                <option>付款方式</option>
+                                                <option value="1">付1押1</option>
+                                                <option value="2">付1押2</option>
+                                                <option value="3">付2押1</option>
+                                                <option value="4">付2押2</option>
+                                                <option value="5">付3押1</option>
+                                                <option value="6">付3押2</option>
+                                                <option value="7">面议</option>
+                                                <option value="8">半年付</option>
+                                                <option value="9">年付</option>
+                                                <option value="10">半年付押1</option>
+                                                <option value="11">半年付不押</option>
+                                                <option value="12">年付不押</option>
+                                                <option value="13">年付押1</option>
+                                            </select>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lightspot" class="col-sm-2 control-label no-padding-right">核心卖点</label>
+                                        <div class="col-sm-6">
+                                            <textarea name="lightspot" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="house_type" class="col-sm-2 control-label no-padding-right">户型介绍</label>
+                                        <div class="col-sm-6">
+                                            <textarea name="house_type" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="decorate_desc" class="col-sm-2 control-label no-padding-right">装修描述</label>
+                                        <div class="col-sm-6">
+                                            <textarea name="decorate_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mating" class="col-sm-2 control-label no-padding-right">周边配套</label>
+                                        <div class="col-sm-6">
+                                            <textarea name="mating" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="estate_desc" class="col-sm-2 control-label no-padding-right">小区介绍</label>
+                                        <div class="col-sm-6">
+                                            <textarea name="estate_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <p class="help-block col-sm-4 red"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">保存信息</button>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
-                            
-            
                 </div>
-                <!-- /Page Body -->
             </div>
-            <!-- /Page Content -->
-        </div>  
-    </div>
 
-        <!--Basic Scripts-->
-    <script src="/test/house/public/static/admin/style/jquery_002.js"></script>
-    <script src="/test/house/public/static/admin/style/bootstrap.js"></script>
-    <script src="/test/house/public/static/admin/style/jquery.js"></script>
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+
+
     <!--Beyond Scripts-->
     <script src="/test/house/public/static/admin/style/beyond.js"></script>
-    <script src="/test/house/public/static/admin/public/js/common.js"></script>
-    <script>
 
-       var SCOPE={
-        'listorder':"<?php echo url('second_house/listorder'); ?>",
-        }; 
-               
-    </script>
+    <script src="/test/house/public/static/admin/bootstrap/js/fileinput.js" type="text/javascript"></script>
+    <script src="/test/house/public/static/admin/bootstrap/js/fileinput_locale_zh.js" type="text/javascript"></script>
+    <script src="/test/house/public/static/admin/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- select选择筛选框 -->
 
+</body>
 
-</body></html>
+</html>
