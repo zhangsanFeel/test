@@ -218,7 +218,7 @@ status
 户型介绍 --	  house_type
 小区介绍 --	  estate_desc
 业主心态 -- mentality
-周边配套 -- mating  
+周边配套 -- mating 
 listorder
 update_time
 create_time

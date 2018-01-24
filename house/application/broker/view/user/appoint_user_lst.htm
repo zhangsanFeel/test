@@ -44,7 +44,8 @@
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
-
+                 <a tooltip="添加带看" style="margin-top:50px" class="btn btn-sm btn-azure btn-addon" href="{:url('rent_house/add')}">
+                    <i class="fa fa-plus"></i> Add</a>
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <div class="widget">
@@ -73,7 +74,7 @@
                                                     <th>描述</th>
                                                     <th>预留姓名</th>
                                                     <th>称呼</th>
-                                                    <th>用户电话</th>
+                                                    <th>客户预留电话</th>
                                                     <th>创建时间</th>
                                                     <th>状态</th>
                                                     <th>操作</th>
@@ -84,8 +85,9 @@
                                                 <tr>
                                                     <td>{$vo.id}</td>
                                                     <td>{$vo.house_type|type_name}</td>
-                                                    <td>{:title($vo.house_id,$vo.house_type)}</td>
-                                                    <td>{$vo.desc}</td>
+                                                    <td><a {if condition="$vo.house_type eq 1" } href="{:url('index/second_house/main',['id'=>$vo.house_id])}" {elseif condition="$vo.house_type eq 2"
+                                                    /} href="{:url('index/rent_house/main',['id'=>$vo.house_id])}" {/if} style="color:red" target="_blank">{:title($vo.house_id,$vo.house_type)}</a></td>
+                                                    <td>{$vo.user_desc}</td>
                                                     <td>{$vo.name}</td>
                                                     <td>{$vo.sex|sex}</td>
                                                     <td>{$vo.phone}</td>
@@ -93,12 +95,12 @@
                                                     <td>{$vo.status|house_type}</td>
                                                     <td>
                                                         <form action="{:url('share/look_add')}" method="post">
-                                                        <a href="{:url('user/collect',['id'=>$vo.user_id])}" class="btn btn-info btn-xs" onclick="">客户</a>
-                                                        {if condition="$vo.status eq 4"}
+                                                        <a href="{:url('user/collect',['id'=>$vo.user_id])}" class="btn btn-info btn-xs" onclick="">存储客户</a>
+                                                        {if condition="$vo.status eq 3"}
                                                             <input type="hidden" name="id" value="{$vo.id}">
                                                             <button type="submit" class="btn btn-warning btn-xs">完成带看</button>
                                                            {else/}
-                                                            <a href="#"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
+                                                            <a href="{:url('share/look_lst',['id'=>$vo.id])}"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
                                                         {/if}
                                                         </form>
                                                         

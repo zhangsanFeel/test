@@ -81,8 +81,8 @@
                                                 <tr>
                                                     <td>{$vo.id}</td>
                                                     <td>{$vo.house_type|type_name}</td>
-                                                    <td>{:title($vo.house_id,$vo.house_type)}</td>
-                                                    <td>{$vo.desc}</td>
+                                                    <td><a {if condition="$vo.house_type eq 1"} href="{:url('index/second_house/main',['id'=>$vo.house_id])}" {elseif condition="$vo.house_type eq 2" /}  href="{:url('index/rent_house/main',['id'=>$vo.house_id])}" {/if}  style="color:red" target="_blank">{:title($vo.house_id,$vo.house_type)}</a></td>
+                                                    <td>{$vo.user_desc}</td>
                                                     <td>{$vo.name} {$vo.sex|sex}</td>
                                                      <td>{$vo.create_time|create_time}</td>
                                                     <td>{$vo.status|house_type}</td>
@@ -128,9 +128,8 @@
 
             $(".receive").click(function () {
                 var id = $(this).attr('data-id');
-                var status=4;
                 var url="{:url('share/look_status')}";
-                $.post(url,{id:id,status:4},function(result){
+                $.post(url,{id:id},function(result){
                     if(result==1){
                         window.alert('已接受委托,可在个人信息查看,请尽快完成委托');
                     }else if(result==2){

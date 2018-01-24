@@ -40,7 +40,7 @@ class RentHouse extends Base{
 			if(!$validate->check($data)){
 				$this->error($validate->getError());
 			}
-
+			$house_code = time() . rand(111111, 999999);
 			//信息重装
 			$rentData=[
 				'title'=>$data['title'],
@@ -64,6 +64,7 @@ class RentHouse extends Base{
 				'house_type'=>$data['house_type'],
 				'decorate_desc'=>$data['decorate_desc'],
 				'mating'=>$data['mating'],
+				'house_code'=> $house_code,
 				'estate_desc'=>$data['estate_desc'],
 				'lift'=>  empty($data['lift'])? '':serialize($data['lift']),
 				'label'=>  empty($data['label'])? '':serialize($data['label']),

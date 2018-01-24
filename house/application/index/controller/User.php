@@ -87,7 +87,7 @@ class User extends Base
         $rents=model('look')->getUserLook($user['id'],2,'1,2,3,4');
 
         //总数
-        $count=model('collect')->collectCount($user['id']);
+        $count=model('look')->lookCount($user['id']);
         $this->assign('rents',$rents);
         $this->assign('count',intval($count));
         $this->assign('seconds',$seconds);

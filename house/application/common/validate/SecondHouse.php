@@ -21,9 +21,11 @@ class SecondHouse extends Validate{
 		'see_house'=>'require|max:100',
 		'lift'=>'array',
 		'label'=>'array',
-		'selling_points'=>'require',
-		'house_type'=>'require',
-		'estate_desc'=>'require',
+		'selling_points'=> 'require|max:255',
+		'house_type'=>'require|max:255',
+		'estate_desc'=> 'require|max:255',
+		'mating'=> 'require|max:255',
+		'mentality'=> 'require|max:255',
 		'id'=>'number',
 		'purpose'=>'require|number|max:2',  /*房屋类型*/
 	];
@@ -107,6 +109,10 @@ class SecondHouse extends Validate{
 		'purpose.require'=>'房屋类型不能为空',
 		'purpose.number'=>'房屋类型输入的数据类型错误',
 		'purpose.max'=>'房屋类型输入的数据类型错误',////
+		'mating.max'=>'业主心态不能过长',////
+		'mating.require'=>'业主心态不能为空',////
+		'mentality.require'=>'业主心态不能为空',////
+		'mentality.max'=>'周边配套不能过长',////
 
 	];
 

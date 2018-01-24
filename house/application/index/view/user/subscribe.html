@@ -14,7 +14,12 @@
 <LINK href="__INDEX__/style/meGrass.css" rel=stylesheet>
 <LINK href="__INDEX__/style/bootstrap.css" rel=stylesheet>
 <script language="JavaScript" type="text/javascript" src="__INDEX__/style/jquery.js"></script>
+<style>
+	table a:hover{
+		text-decoration:underline;
+	}
 
+</style>
     
 
 <!--[if IE 6]><script type="text/javascript" src="js/DD_belatedPNG.js"></script><![endif]-->
@@ -76,6 +81,7 @@ $(function(){
 	                        <th>预约房源</th>
 	                        <th>描述</th>
 	                        <th>预留姓名</th>
+	                        <th>性别</th>
 	                        <th>创建时间</th>
 	                        <th>状态</th>
 	                        <th>操作</th>
@@ -86,17 +92,18 @@ $(function(){
 	                    {volist name="seconds" id="vo"}
 	                    <tr>
 	                        <td>{$vo.id}</td>
-	                        <td>{:title($vo.house_id,$vo.house_type)}</td>
-	                        <td>{$vo.desc}</td>
-	                        <td>{$vo.name} {$vo.sex|sex}</td>
+	                        <td><a href="{:url('second_house/main',['id'=>$vo.house_id])}"  style="color:red" target="_blank">{:title($vo.house_id,$vo.house_type)}</a></td>
+	                        <td>{$vo.user_desc|title_substr=###,10}</td>
+	                        <td>{$vo.name} </td>
+	                        <td>{$vo.sex|sex}</td>
 	                         <td>{$vo.create_time|create_time}</td>
 	                        <td>{$vo.status|house_type}</td>
 	                        <td>
 	                        	
 										
 	                        	
-	                        	{if condition="$vo.status eq 3"}
-								<form action="{:url('rent_house/delete')}" method="post">
+	                        	{if condition="$vo.status eq 4"}
+								<form action="{:url('index/subscribe_del')}" method="post">
 									<input type="hidden" name="id" value="{$vo.id}" />
 									<button class="tag-fense" type="submit"><i class="fa fa-trash-o"></i>取消预约</button>
 								</form>
@@ -124,6 +131,7 @@ $(function(){
 	                        <th>预约房源</th>
 	                        <th>描述</th>
 	                        <th>预留姓名</th>
+	                        <th>性别</th>
 	                        <th>创建时间</th>
 	                        <th>状态</th>
 	                        <th>操作</th>
@@ -134,14 +142,31 @@ $(function(){
 	                    {volist name="rents" id="vo"}
 	                    <tr>
 	                        <td>{$vo.id}</td>
-	                        <td>{:title($vo.house_id,$vo.house_type)}</td>
-	                        <td>{$vo.desc}</td>
-	                        <td>{$vo.name} {$vo.sex|sex}</td>
+	                        <td><a href="{:url('rent_house/main',['id'=>$vo.house_id])}" style="color:red" target="_blank">{:title($vo.house_id,$vo.house_type)}</a></td>
+	                        <td>{$vo.user_desc|title_substr=###,10}</td>
+	                        <td>{$vo.name}</td>
+	                        <td>{$vo.sex|sex}</td>
 	                         <td>{$vo.create_time|create_time}</td>
 	                        <td>{$vo.status|house_type}</td>
 	                        <td>
-	                            <a href="{:url('rent_house/delete',['id'=>$vo.id])}"  class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>取消预约</a>
-	                        </td>
+								 {if condition="$vo.status eq 4"}
+								<form action="{:url('index/subscribe_del')}" method="post">
+									<input type="hidden" name="id" value="{$vo.id}" />
+									<button class="tag-fense" type="submit">
+										<i class="fa fa-trash-o"></i>取消预约</button>
+								</form>
+								{elseif condition="$vo.status eq 2"/}
+								<form action="{:url('user/grade')}" method="post">
+									<input type="hidden" name="id" value="{$vo.id}" />
+									<input type="hidden" name="status" value="{$vo.status}" />
+									<button class="tag-blue" type="submit">
+										<i class="fa fa-trash-o"></i>进行评分</button>
+								</form>
+								 {elseif condition="$vo.status eq 1"/}
+								<a href="{:url('user/')}" class="tag-fense">查看我的委托</a>
+
+								{/if}
+							</td>
 	                    </tr>
 	                    {/volist}
 	                </tbody>

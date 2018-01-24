@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\test\house\public/../application/broker\view\user\appoint_user_lst.htm";i:1516775909;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\test\house\public/../application/broker\view\user\appoint_user_lst.htm";i:1516785194;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
@@ -281,7 +281,8 @@
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
-
+                 <a tooltip="添加带看" style="margin-top:50px" class="btn btn-sm btn-azure btn-addon" href="<?php echo url('rent_house/add'); ?>">
+                    <i class="fa fa-plus"></i> Add</a>
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <div class="widget">
@@ -310,7 +311,7 @@
                                                     <th>描述</th>
                                                     <th>预留姓名</th>
                                                     <th>称呼</th>
-                                                    <th>用户电话</th>
+                                                    <th>客户预留电话</th>
                                                     <th>创建时间</th>
                                                     <th>状态</th>
                                                     <th>操作</th>
@@ -321,8 +322,8 @@
                                                 <tr>
                                                     <td><?php echo $vo['id']; ?></td>
                                                     <td><?php echo type_name($vo['house_type']); ?></td>
-                                                    <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-                                                    <td><?php echo $vo['desc']; ?></td>
+                                                    <td><a <?php if($vo['house_type'] == 1): ?> href="<?php echo url('index/second_house/main',['id'=>$vo['house_id']]); ?>" <?php elseif($vo['house_type'] == 2): ?> href="<?php echo url('index/rent_house/main',['id'=>$vo['house_id']]); ?>" <?php endif; ?> style="color:red" target="_blank"><?php echo title($vo['house_id'],$vo['house_type']); ?></a></td>
+                                                    <td><?php echo $vo['user_desc']; ?></td>
                                                     <td><?php echo $vo['name']; ?></td>
                                                     <td><?php echo sex($vo['sex']); ?></td>
                                                     <td><?php echo $vo['phone']; ?></td>
@@ -330,12 +331,12 @@
                                                     <td><?php echo house_type($vo['status']); ?></td>
                                                     <td>
                                                         <form action="<?php echo url('share/look_add'); ?>" method="post">
-                                                        <a href="<?php echo url('user/collect',['id'=>$vo['user_id']]); ?>" class="btn btn-info btn-xs" onclick="">客户</a>
-                                                        <?php if($vo['status'] == 4): ?>
+                                                        <a href="<?php echo url('user/collect',['id'=>$vo['user_id']]); ?>" class="btn btn-info btn-xs" onclick="">存储客户</a>
+                                                        <?php if($vo['status'] == 3): ?>
                                                             <input type="hidden" name="id" value="<?php echo $vo['id']; ?>">
                                                             <button type="submit" class="btn btn-warning btn-xs">完成带看</button>
                                                            <?php else: ?>
-                                                            <a href="#"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
+                                                            <a href="<?php echo url('share/look_lst',['id'=>$vo['id']]); ?>"  class="btn btn-success btn-xs" onclick="" >已完成带看</a>  
                                                         <?php endif; ?>
                                                         </form>
                                                         

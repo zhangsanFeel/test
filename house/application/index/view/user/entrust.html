@@ -14,7 +14,11 @@
 <LINK href="__INDEX__/style/meGrass.css" rel=stylesheet>
 <LINK href="__INDEX__/style/bootstrap.css" rel=stylesheet>
 <script language="JavaScript" type="text/javascript" src="__INDEX__/style/jquery.js"></script>
-
+<style>
+	table a:hover {
+		text-decoration: underline;
+	}
+</style>
     
 
 <!--[if IE 6]><script type="text/javascript" src="js/DD_belatedPNG.js"></script><![endif]-->
@@ -61,7 +65,7 @@ $(function(){
 		</div>
 		<!-- 右边主题 -->
 		<div class="me-content">
-			<h2>共<span class="red">{$count}</span>次委托</h2>
+			<h2>共<span class="red">{$count}</span>完成评分</h2>
 			<div class="me-nav" style="margin-bottom:50px">
 				<ul>
 					<li class=" h1 active"><a href="#">二手房</a></li>
@@ -85,7 +89,7 @@ $(function(){
 	                    {volist name="seconds" id="vo"}
 	                    <tr>
 	                        <td>{$vo.id}</td>
-	                        <td>{:title($vo.house_id,$vo.house_type)}</td>
+	                        <td><a href="{:url('rent_house/main',['id'=>$vo.house_id])}" style="color:red" target="_blank">{:title($vo.house_id,$vo.house_type)}</a></td>
 	                        <td>{$vo.evaluate|title_substr}</td>
 	                        <td><a href="{:url('broker/user',['id'=>$vo.broker_id])}" target="_blank">{$vo.broker_id|broker_name}</a></td>
 	                         <td>{$vo.grade}分</td>
@@ -115,7 +119,7 @@ $(function(){
 							<tr>
 								<td>{$vo.id}</td>
 								<td>{:title($vo.house_id,$vo.house_type)}</td>
-								<td>{$vo.desc}</td>
+								<td>{$vo.user_desc|title_substr=###,10}</td>
 								<td>{$vo.name} {$vo.sex|sex}</td>
 								<td>{$vo.create_time|create_time}</td>
 								<td>{$vo.status|house_type}</td>

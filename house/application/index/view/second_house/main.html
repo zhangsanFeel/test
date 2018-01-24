@@ -72,6 +72,9 @@
          $('.collect').mouseout(function(){
             var text=$(this).text('已收藏');
         })
+        $('.subscribes').click(function(){
+            $('#form').submit();
+        })
 
         
     });
@@ -90,6 +93,10 @@
 </div>
 
 </div>
+<form action="{:url('index/subscribe')}" method="post" id="form">
+    <input type="hidden" name="id" value="{$second.id}">
+    <input type="hidden" name="type" value="1">
+</form>
 <!-- 搜索框 -->
         <!-- 导航栏 -->
  <div class="article-shupiao">
@@ -107,9 +114,9 @@
             <a href="{:url('index/collect',['id'=>$second.id,'type'=>1])}" class="article-collect">收藏房源</a>
           {/if}
           {if condition="$look"}
-               <a href="{:url('index/subscribe',['id'=>$second.id,'type'=>1])}" class="article-subscribe">已预约带看</a>
+               <a href="{:url('user/subscribe')}" class="article-subscribe">已预约带看</a>
           {else/}
-             <a href="{:url('index/subscribe',['id'=>$second.id,'type'=>1])}" class="article-subscribe">预约带看</a>
+             <a  class="article-subscribe subscribes">预约带看</a>
           {/if}
          
         </div>

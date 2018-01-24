@@ -28,6 +28,7 @@ class Look extends Validate{
 	protected $scene=[
 		'edit'=>['name','city_id','city_id','broker_username','broker_tel','address','location_tel','id'],
 		'grade'=>['grade','id','evaluate'],
+		'subscribe_add'=>['house_type', 'house_id', 'name', 'sex', 'phone', 'desc'],
 	];
 
 }

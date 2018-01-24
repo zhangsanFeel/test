@@ -55,6 +55,20 @@ function city_pid($city_pid,$pid){
 	}
 }
 
+//查询房源编号
+function house_code($house_id,$house_type){
+	if(empty($house_id) || empty($house_type)){
+	 return false;
+	}
+
+	$hosue_name=type($house_type);
+	$house_code=model($hosue_name)->where('id',$house_id)->value('house_code');
+	if(empty($house_code)){
+		return false;
+	}
+	return $house_code;
+}
+
 
 //查询所属商圈
 
@@ -312,7 +326,8 @@ function bilibili($type,$value){
 	
 }
 
-
+//修改的时候，check 确认选择
+// 1.为 数组，  2为 值
 function childvery($type,$value){
 	if($type && $value ){
 		$array=unserialize($type);
@@ -689,7 +704,7 @@ function actuality($actuality){
 	}
 }
 
-
+//配套设备函数
 function equipment($lift){
 	if(empty($lift)){
 		return false;
@@ -746,7 +761,7 @@ function equipment($lift){
 
 }
 
-
+//手机号函数 输入手机号 返回这   135 *****1 格式
 function phone($phone){
 	if(empty($phone)){
 		return false;
@@ -759,7 +774,7 @@ function phone($phone){
 }
 
 
-
+//选择分类函数 ，， 1为二手房 2为租房模型名称
 function type($type){
 	if($type==1){
 	    $house="second_house";
@@ -772,7 +787,7 @@ function type($type){
 	return $house;
 }
 
-
+//男女函数  1.为男，2为女士
 function sex($sex){
 	if($sex==1){
 	    $sex="先生";
@@ -785,26 +800,24 @@ function sex($sex){
 	return $sex;
 }
 
-
+/* 
+	TITLE函数，
+*/
 function title($house_id,$house_type){
 	if(empty($house_id) || empty($house_type) ){
 		return false;
 	}
-
-	
+	$house_name=type($house_type);
+	$house = model($house_name)->get($house_id);
+	$str = estate_name($house['estate_id']) . ' ' . $house['room'] . "室" . $house['room'] . "厅 " . decorate($house['decorate']) . ' ';
 	if($house_type==1){
-		$house=model('second_house')->get($house_id);	
-		$str='<a href="'.url('index/second_house/main',['id'=>$house_id]).'"  target="_blank" class="red">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
-		$str.=floatval($house['price']).'万</a>';
+		$str.=floatval($house['price']).'万';
 	}elseif($house_type==2){
-		$house=model('rent_house')->get($house_id);	
-
-		$str='<a href="'.url('index/rent_house/main',['id'=>$house_id]).'"  target="_blank"  class="red">' . estate_name($house['estate_id']).' '. $house['room']."室".$house['room']."厅 " . decorate($house['decorate']).' ' ;
-
-		$str.= floatval($house['price']) .'元/月 '.payment_type($house['payment_type']).'</a>';
+		$str.= floatval($house['price']) .'元/月 '.payment_type($house['payment_type']);
 	}else{
 		return false;
 	}
+
 	return $str;
 }
 
@@ -816,9 +829,9 @@ function house_type($status){
 	}elseif($status==2){
 		$str="等待用户评分";
 	}elseif($status==3){
-		$str="未有经纪人回复";
+		$str= "经纪人已接受委托";
 	}elseif($status==4){
-		$str="经纪人已接受委托";
+		$str="未有经纪人回复";
 	}else{
 		return false;
 	}
@@ -837,14 +850,15 @@ function type_name($house_type){
 	return $str;
 }
 
-function title_substr($title,$len=20){
+//标题长度设置
+function title_substr($title,$sublen=20){
 	if(empty($title)){
 		return false;
 	}
 
 	$len=mb_strlen($title,"utf8");
-	if($len>$len){
-		return mb_substr($title,0,$len,'utf8').'...';
+	if($len> $sublen){
+		return mb_substr($title,0, $sublen,'utf8').'...';
 	}else{
 		return $title;
 	}

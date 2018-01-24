@@ -134,4 +134,18 @@ class Look extends BaseModel{
 		return $arr;
 	 }
 
+	 //查询用户一共看了多少套房子 1234
+	 public function lookCount($user_id){
+		if (empty($user_id)) {
+			return false;
+		}
+
+		$data=[
+			'user_id'=>intval($user_id),
+		];
+
+		$count=$this->where($data)->count();
+		return intval($count);
+	 }
+
 }

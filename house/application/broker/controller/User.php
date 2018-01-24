@@ -21,9 +21,9 @@ class User extends Base{
 	public function appoint_user_lst(){
 		$broker_id=$this->getLogins()['id'];
 		//显示委托数据
+		//3是接受委托。 2是带看完，但是没有评分
 
-
-		$look=model('look')->getNormalLook(['status'=>['in','4,2'],'broker_id'=>$broker_id]);
+		$look=model('look')->getNormalLook(['status'=>['in','3,2'],'broker_id'=>$broker_id]);
 
 		
 		$this->assign('look',$look);

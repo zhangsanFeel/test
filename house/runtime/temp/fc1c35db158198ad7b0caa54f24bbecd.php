@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/broker\view\share\look_lst.htm";i:1516766505;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/broker\view\share\look_lst.htm";i:1516784347;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
@@ -318,8 +318,8 @@
                                                 <tr>
                                                     <td><?php echo $vo['id']; ?></td>
                                                     <td><?php echo type_name($vo['house_type']); ?></td>
-                                                    <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-                                                    <td><?php echo $vo['desc']; ?></td>
+                                                    <td><a <?php if($vo['house_type'] == 1): ?> href="<?php echo url('index/second_house/main',['id'=>$vo['house_id']]); ?>" <?php elseif($vo['house_type'] == 2): ?>  href="<?php echo url('index/rent_house/main',['id'=>$vo['house_id']]); ?>" <?php endif; ?>  style="color:red" target="_blank"><?php echo title($vo['house_id'],$vo['house_type']); ?></a></td>
+                                                    <td><?php echo $vo['user_desc']; ?></td>
                                                     <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
                                                      <td><?php echo create_time($vo['create_time']); ?></td>
                                                     <td><?php echo house_type($vo['status']); ?></td>
@@ -365,9 +365,8 @@
 
             $(".receive").click(function () {
                 var id = $(this).attr('data-id');
-                var status=4;
                 var url="<?php echo url('share/look_status'); ?>";
-                $.post(url,{id:id,status:4},function(result){
+                $.post(url,{id:id},function(result){
                     if(result==1){
                         window.alert('已接受委托,可在个人信息查看,请尽快完成委托');
                     }else if(result==2){

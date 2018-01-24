@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/index\view\user\subscribe.html";i:1516764628;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/index\view\user\subscribe.html";i:1516783771;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,7 +15,12 @@
 <LINK href="/test/house/public/static/index/style/meGrass.css" rel=stylesheet>
 <LINK href="/test/house/public/static/index/style/bootstrap.css" rel=stylesheet>
 <script language="JavaScript" type="text/javascript" src="/test/house/public/static/index/style/jquery.js"></script>
+<style>
+	table a:hover{
+		text-decoration:underline;
+	}
 
+</style>
     
 
 <!--[if IE 6]><script type="text/javascript" src="js/DD_belatedPNG.js"></script><![endif]-->
@@ -100,6 +105,7 @@ $(function(){
 	                        <th>预约房源</th>
 	                        <th>描述</th>
 	                        <th>预留姓名</th>
+	                        <th>性别</th>
 	                        <th>创建时间</th>
 	                        <th>状态</th>
 	                        <th>操作</th>
@@ -110,17 +116,18 @@ $(function(){
 	                    <?php if(is_array($seconds) || $seconds instanceof \think\Collection || $seconds instanceof \think\Paginator): $i = 0; $__LIST__ = $seconds;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 	                    <tr>
 	                        <td><?php echo $vo['id']; ?></td>
-	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-	                        <td><?php echo $vo['desc']; ?></td>
-	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                        <td><a href="<?php echo url('second_house/main',['id'=>$vo['house_id']]); ?>"  style="color:red" target="_blank"><?php echo title($vo['house_id'],$vo['house_type']); ?></a></td>
+	                        <td><?php echo title_substr($vo['user_desc'],10); ?></td>
+	                        <td><?php echo $vo['name']; ?> </td>
+	                        <td><?php echo sex($vo['sex']); ?></td>
 	                         <td><?php echo create_time($vo['create_time']); ?></td>
 	                        <td><?php echo house_type($vo['status']); ?></td>
 	                        <td>
 	                        	
 										
 	                        	
-	                        	<?php if($vo['status'] == 3): ?>
-								<form action="<?php echo url('rent_house/delete'); ?>" method="post">
+	                        	<?php if($vo['status'] == 4): ?>
+								<form action="<?php echo url('index/subscribe_del'); ?>" method="post">
 									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
 									<button class="tag-fense" type="submit"><i class="fa fa-trash-o"></i>取消预约</button>
 								</form>
@@ -148,6 +155,7 @@ $(function(){
 	                        <th>预约房源</th>
 	                        <th>描述</th>
 	                        <th>预留姓名</th>
+	                        <th>性别</th>
 	                        <th>创建时间</th>
 	                        <th>状态</th>
 	                        <th>操作</th>
@@ -158,14 +166,31 @@ $(function(){
 	                    <?php if(is_array($rents) || $rents instanceof \think\Collection || $rents instanceof \think\Paginator): $i = 0; $__LIST__ = $rents;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 	                    <tr>
 	                        <td><?php echo $vo['id']; ?></td>
-	                        <td><?php echo title($vo['house_id'],$vo['house_type']); ?></td>
-	                        <td><?php echo $vo['desc']; ?></td>
-	                        <td><?php echo $vo['name']; ?> <?php echo sex($vo['sex']); ?></td>
+	                        <td><a href="<?php echo url('rent_house/main',['id'=>$vo['house_id']]); ?>" style="color:red" target="_blank"><?php echo title($vo['house_id'],$vo['house_type']); ?></a></td>
+	                        <td><?php echo title_substr($vo['user_desc'],10); ?></td>
+	                        <td><?php echo $vo['name']; ?></td>
+	                        <td><?php echo sex($vo['sex']); ?></td>
 	                         <td><?php echo create_time($vo['create_time']); ?></td>
 	                        <td><?php echo house_type($vo['status']); ?></td>
 	                        <td>
-	                            <a href="<?php echo url('rent_house/delete',['id'=>$vo['id']]); ?>"  class="btn btn-danger btn-xs delete" onclick="" ><i class="fa fa-trash-o"></i>取消预约</a>
-	                        </td>
+								 <?php if($vo['status'] == 4): ?>
+								<form action="<?php echo url('index/subscribe_del'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
+									<button class="tag-fense" type="submit">
+										<i class="fa fa-trash-o"></i>取消预约</button>
+								</form>
+								<?php elseif($vo['status'] == 2): ?>
+								<form action="<?php echo url('user/grade'); ?>" method="post">
+									<input type="hidden" name="id" value="<?php echo $vo['id']; ?>" />
+									<input type="hidden" name="status" value="<?php echo $vo['status']; ?>" />
+									<button class="tag-blue" type="submit">
+										<i class="fa fa-trash-o"></i>进行评分</button>
+								</form>
+								 <?php elseif($vo['status'] == 1): ?>
+								<a href="<?php echo url('user/'); ?>" class="tag-fense">查看我的委托</a>
+
+								<?php endif; ?>
+							</td>
 	                    </tr>
 	                    <?php endforeach; endif; else: echo "" ;endif; ?>
 	                </tbody>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:82:"D:\phpStudy\WWW\test\house\public/../application/index\view\second_house\main.html";i:1516501308;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:82:"D:\phpStudy\WWW\test\house\public/../application/index\view\second_house\main.html";i:1516780435;s:68:"D:\phpStudy\WWW\test\house\application\index\view\public\header.html";i:1516498860;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -96,6 +96,9 @@
          $('.collect').mouseout(function(){
             var text=$(this).text('已收藏');
         })
+        $('.subscribes').click(function(){
+            $('#form').submit();
+        })
 
         
     });
@@ -114,6 +117,10 @@
 </div>
 
 </div>
+<form action="<?php echo url('index/subscribe'); ?>" method="post" id="form">
+    <input type="hidden" name="id" value="<?php echo $second['id']; ?>">
+    <input type="hidden" name="type" value="1">
+</form>
 <!-- 搜索框 -->
         <!-- 导航栏 -->
  <div class="article-shupiao">
@@ -130,9 +137,9 @@
           <?php else: ?>
             <a href="<?php echo url('index/collect',['id'=>$second['id'],'type'=>1]); ?>" class="article-collect">收藏房源</a>
           <?php endif; if($look): ?>
-               <a href="<?php echo url('index/subscribe',['id'=>$second['id'],'type'=>1]); ?>" class="article-subscribe">已预约带看</a>
+               <a href="<?php echo url('user/subscribe'); ?>" class="article-subscribe">已预约带看</a>
           <?php else: ?>
-             <a href="<?php echo url('index/subscribe',['id'=>$second['id'],'type'=>1]); ?>" class="article-subscribe">预约带看</a>
+             <a  class="article-subscribe subscribes">预约带看</a>
           <?php endif; ?>
          
         </div>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:81:"D:\phpStudy\WWW\test\house\public/../application/broker\view\second_house\add.htm";i:1516264165;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:81:"D:\phpStudy\WWW\test\house\public/../application/broker\view\second_house\add.htm";i:1516779106;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
@@ -511,9 +511,23 @@
                             <p class="help-block col-sm-4 red"></p>
                         </div>
                         <div class="form-group">
-                            <label for="estate_desc" class="col-sm-2 control-label no-padding-right">小区介绍</label>
+                            <label for="estate_desc" class="col-sm-2 control-label no-padding-right">业主心态</label>
                             <div class="col-sm-6">
                                <textarea name="estate_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="mentality" class="col-sm-2 control-label no-padding-right">周边配套</label>
+                            <div class="col-sm-6">
+                                <textarea name="mentality" class="form-control" id="" cols="30" rows="10"></textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="mating" class="col-sm-2 control-label no-padding-right">小区介绍</label>
+                            <div class="col-sm-6">
+                               <textarea name="mating" class="form-control" id="" cols="30" rows="10"></textarea>
                             </div>
                             <p class="help-block col-sm-4 red"></p>
                         </div>

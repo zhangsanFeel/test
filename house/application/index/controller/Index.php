@@ -87,7 +87,7 @@ class Index extends Base
         } 
     }
 
-
+    //网上预约功能
     public function subscribe(){
         $user_id=$this->getLogins()['id'];
         if(empty($user_id)){
@@ -96,61 +96,100 @@ class Index extends Base
 
         //有表单提交后
         if(request()->isPost()){
-            $data=input('post.'); 
-            $validate=validate('look');
-
-            if(!$validate->check($data)){
-               $this->error($validate->getError());
-            }  
-            $lookData=[
-            'house_type'=>$data['house_type'],
-            'house_id'=>$data['house_id'],
-            'name'=>empty($data['name'])?'':$data['name'],
-            'sex'=>$data['sex'],
-            'desc'=>empty($data['desc'])?'':$data['desc'],
-            'phone'=>session('user','','index')['phone'],
-            'user_id'=>session('user','','index')['id'],
-            'status'=>3,
-            ];
-            
-            $res=model('look')->addLook($lookData);
-            if($res){
-                $this->success('预约创建成功',url('user/index'));
-            }else{
-                $this->error('预约创建失败');
+            $data = input('post.');
+            if (!$this->getLogins() || $this->getLogins()['status'] != 1) {
+                $this->error('请登录', url('login/index'));
             }
 
-        }else{
-            
-             $data=input();
-            if(!$this->getLogins() || $this->getLogins()['status']!=1){
-                $this->error('请登录',url('login/index'));
-            }
-            
-            if(empty($data)){
+            if (empty($data)) {
                 $this->error('404找不到页面');
             }
 
-            if(empty(type($data['type']))){
+            if (empty(type($data['type']))) {
                 $this->error('404找不到页面');
             }
 
 
 
 
-            $house=model(type($data['type']))->get(intval($data['id']));
+            $house = model(type($data['type']))->get(intval($data['id']));
 
 
 
-            
-            if(empty($house)){
+
+            if (empty($house)) {
                 $this->error('房源已被删除');
             }
 
-            $this->assign('type',$data['type']);
-            $this->assign('house',$house);
-            return view();      
+            $this->assign('type', $data['type']);
+            $this->assign('house', $house);
+            return view(); 
+
+            
+        }else{
+            $this->error('404找不到页面');
+                 
         }
        
+    }
+
+    //添加预约信息
+    public function subscribe_add(){
+      
+        $user_id = $this->getLogins()['id'];
+        if (empty($user_id)) {
+            $this->error('请登录', url('login/index'));
+        }
+
+        //有表单提交后
+        if (request()->isPost()){
+            $data = input('post.');
+            $validate = validate('look');
+            if (!$validate->scene("subscribe_add")->check($data)) {
+                $this->error($validate->getError()); 
+            }
+          
+           
+            $lookData = [
+                'house_type' => $data['house_type'],
+                'house_id' => $data['house_id'],
+                'name' => empty($data['name']) ? '' : $data['name'],
+                'sex' => $data['sex'],
+                'user_desc' => empty($data['user_desc']) ? '' : $data['user_desc'],
+                'phone' => $data['phone'],
+                'user_id' => session('user', '', 'index')['id'],
+                'status' => 4,
+            ];
+
+            //状态 4为， 提交带看信息，但是未被经纪人领取
+            $res = model('look')->addLook($lookData);
+
+            if ($res) {
+                $this->success('预约创建成功', url('user/subscribe'));
+            } else {
+                $this->error('预约创建失败');
+            }
+
+        }
+    }
+
+    //取消预约
+    public function subscribe_del(){
+        if(!request()->isPost()){
+            $this->error('404找不到页面');
+        }
+        $id=input('post.id','','intval');
+
+        $look=model('look')->where('status',4)->find($id);
+        if(empty($look)){
+            $this->error('预约不存在');
+        }
+        $res=model('look')->where('id',$look['id'])->delete();
+
+        if($res){
+            $this->success("预约取消成功",url('second_house/main',['id'=> $look['house_id']]));
+        }else{
+            $this->error('预约取消失败',url('user/subscribe'));
+        }
     }
 }

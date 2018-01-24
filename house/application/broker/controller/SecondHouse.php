@@ -16,7 +16,6 @@ class SecondHouse extends Base{
 			//二手房小区信息
 			$estates=model('estate')->select();
 			//二手房标签信息
-				
 			
 			$this->assign("estates",$estates);
 			return view();
@@ -41,9 +40,9 @@ class SecondHouse extends Base{
 			$validate=validate('second_house');
 
 			if(!$validate->check($data)){
-				$this->error($validate->getError());
+				 $this->error($validate->getError()); 
 			}
-
+			$house_code=time().rand(111111,999999);
 			//信息重装
 			$secondData=[
 				'title'=>$data['title'],
@@ -68,8 +67,11 @@ class SecondHouse extends Base{
 				'selling_points'=>$data['selling_points'],
 				'estate_desc'=>$data['estate_desc'],
 				'house_type'=>$data['house_type'],
+				'mating'=>$data['mating'],
+				'mentality'=>$data['mentality'],
 				'lift'=>  empty($data['lift'])? '':serialize($data['lift']),
 				'label'=>  empty($data['label'])? '':serialize($data['label']),
+				'house_code'=> $house_code,
 
 			];
 
@@ -173,6 +175,9 @@ class SecondHouse extends Base{
 
 
 	}
+
+
+	
 
 
 	//更新列表

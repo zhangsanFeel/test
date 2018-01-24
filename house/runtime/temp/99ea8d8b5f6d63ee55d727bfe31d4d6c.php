@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/broker\view\share\look_add.htm";i:1516778474;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\test\house\public/../application/broker\view\share\look_add.htm";i:1516785819;s:68:"D:\phpStudy\WWW\test\house\application\broker\view\public\header.htm";i:1516764725;}*/ ?>
 <!DOCTYPE html>
 <html><head>
         <meta charset="utf-8">
@@ -302,7 +302,7 @@
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label no-padding-right">主要带看房源编号</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="title" placeholder="" value="<?php echo $look['house_id']; ?>" name="title" required="" type="text">
+                                <input class="form-control" id="title" placeholder="" value="<?php echo house_code($look['house_id'],$look['house_type']); ?>" name="title" required="" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

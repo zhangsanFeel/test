@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label no-padding-right">主要带看房源编号</label>
                             <div class="col-sm-6">
-                                <input class="form-control" id="title" placeholder="" value="{$look.house_id}" name="title" required="" type="text">
+                                <input class="form-control" id="title" placeholder="" value="{$look.house_id|house_code=###,$look.house_type}" name="title" required="" type="text">
                             </div>
                             <p class="help-block col-sm-4 red">* 必填</p>
                         </div>

@@ -37,7 +37,8 @@ class Collect extends Model{
 	 	'user_id'=>$user_id,
 	 	];
 
-	 	$res=$this->where($data)->count();
+		 $res=$this->where($data)->count();
+		 
 
 	 	if($res){
 	 		return $res;
