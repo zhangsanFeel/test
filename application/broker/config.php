@@ -29,8 +29,8 @@ return [
     ],
 
     'view_replace_str'  =>  [
-    '__ADMIN__' => '/house/public/static/admin',
-    '__IMG__' => '/house/public/uploads',
+    '__ADMIN__' => '/test/public/static/admin',
+    '__IMG__' => '/test/public/uploads',
     
 
     ],
