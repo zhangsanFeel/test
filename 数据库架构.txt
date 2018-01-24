@@ -48,7 +48,7 @@
 姓名--username
 密码---password
 加密--code
-邮箱--email
+邮箱--email	
 联系电话--phone
 职位--position
 入职时间--entry_time
@@ -217,6 +217,8 @@ status
 核心卖点 --   selling_points
 户型介绍 --	  house_type
 小区介绍 --	  estate_desc
+业主心态 -- mentality
+周边配套 -- mating  
 listorder
 update_time
 create_time
@@ -375,8 +377,11 @@ id
 10.评分
 11.评价
 12.性别
+13.带看后经纪人描述
 
-id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex
+
+
+id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex,broker_desc
 
 
 状态
