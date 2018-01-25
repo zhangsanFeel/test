@@ -381,7 +381,7 @@ id
 
 
 
-id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex,broker_desc
+id,phone,name,user_id,broker_id,grade,house_type,desc,evaluate,sex,broker_desc,house_code
 
 
 状态
