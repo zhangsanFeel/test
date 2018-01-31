@@ -234,7 +234,9 @@ update_time
 create_time
 status
 
-
+iapple---电话号
+owner--用户名
+address--坐落
 
 
 
@@ -266,6 +268,7 @@ status
 租房方式 --   rent_type
 付款方式 --   payment_type
 房屋现状 --   actuality
+--------------------------
 房源亮点 --   lightspot
 户型介绍 --   house_type 
 经纪人--   broker_id
@@ -287,6 +290,7 @@ create_time
 status
 配套---left
 男女不限--setSax
+标签--label
 出租房介绍--property
 装修情况--decorate
 房屋类型--purpose
@@ -488,8 +492,44 @@ id。小区名称，所属商圈，所属区域，类型(1.成交，2带看) ,�
 
 
 
+维护信息   maintain
 
-委托房源
+主键--id
+维护人-broker_id
+
+维护房源-- house_id
+维护类型--type  1.二手房 2.租房
+描述--- desc
+父级id  --pid 
+点赞总数量--praise_count
+发布时间--create_time
+更新时间--update_time
+状态---status 启用
+
+
+
+
+点赞表---praise
+
+主键--id
+点赞信息--praise
+维护信息的--main_id
+维护信息分类 --type
+点赞人id--broker_id
+发布时间--create_time
+
+
+
+信息表--- notice
+
+主键--id
+发送者--broker_id
+发送人姓名--broker_name
+接受者--user_id
+描述信息--desc
+发送时间--create_time
+标题--title
+状态--  1.正常  2.发送者删除  3.是接受者删除
 
 
 
