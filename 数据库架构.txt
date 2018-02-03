@@ -67,6 +67,7 @@ status （1为正常，2为不启用，-1为删除）
 主键---id
 门店名称--name
 门店地址--address
+门店照片--location_img
 门店所属地址--city_id
 门店地址路径 --city_path
 店长---broker_name
@@ -550,6 +551,114 @@ create_time
 status  1.为正常 2.为下架
 
 
+
+
+
+
+
+配置信息表---
+
+
+精品房源文本
+
+
+关于我们文本
+
+购房须知
+
+
+
+
+
+
+
+网站关键字  ---keywords
+
+网站标题 --title
+
+电话 phone
+
+传真  fax
+
+地址 address
+
+版权  copy
+
+icp备案编号 icp
+
+
+技术支持  support
+
+
+网站logo logo
+
+
+邮箱 email
+
+扫一扫二维码  code_img
+
+
+关于我们--abour_us
+
+关于我们--abour_us_title
+
+购房须知--Notice
+
+购房须知--Notice_title
+
+主要地区和小区 sift_house
+
+
+主要地区和小区 sift_house_title
+
+
+维护房源时常  不超过 7 天  main_day
+
+
+
+
+新闻信息表---news
+
+
+主键--id
+
+标题--title
+
+发布时间--create_time
+
+更新时间--update_time
+
+状态--status  1.启用 2.禁用
+
+关键字--keywords
+
+发布人---location_id
+
+发布人--location_name
+
+内容--content
+
+
+
+
+
+
+友情链接表---link
+
+
+主键--id
+
+标题--title
+
+友情链接--url
+
+描述--desc
+
+发布时间--create_time
+
+更新时间--update_time
+
+状态--status
 
 
 
